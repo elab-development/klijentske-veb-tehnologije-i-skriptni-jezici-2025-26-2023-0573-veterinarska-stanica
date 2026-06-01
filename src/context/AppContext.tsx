@@ -21,7 +21,7 @@ const pocetniTermini: Termin[] = [
     datum: "5.12.2026.",
     usluga: "Redovni pregled",
     ljubimac: "Reks",
-    status: "Potvrđeno",
+    status: "Potvrdjeno",
   },
   {
     id: 2,

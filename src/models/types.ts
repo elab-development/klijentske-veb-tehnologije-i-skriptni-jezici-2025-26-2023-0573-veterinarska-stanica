@@ -32,7 +32,7 @@ export interface Termin {
   datum: string;
   usluga: string;
   ljubimac: string;
-  status: "Potvrdjeno" | "Na cekanju" | "Otkazano";
+  status: "Potvrdjeno" | "Na čekanju" | "Otkazano";
 }
 
 export interface Rezencija {
