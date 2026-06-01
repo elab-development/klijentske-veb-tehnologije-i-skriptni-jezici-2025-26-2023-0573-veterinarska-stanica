@@ -1,6 +1,17 @@
+import { useState } from "react";
 import "./Zakazivanje.css";
 
+const USLUGE_LISTA = [
+  { naziv: "Opšti pregled i dijagnoza", cena: "1.500 din" },
+  { naziv: "Vakcinacija", cena: "2.000 din" },
+  { naziv: "Sterilizacija / Kastracija", cena: "6.000 din" },
+  { naziv: "Rendgen snimanje", cena: "3.500 din" },
+  { naziv: "Ultrazvuk", cena: "4.000 din" },
+];
+
 export default function Zakazivanje() {
+  const [izabranaUsluga, setIzabranaUsluga] = useState("");
+
   return (
     <div className="zakazivanje-stranica">
       <div className="zakazivanje-header">
@@ -12,7 +23,22 @@ export default function Zakazivanje() {
         <div className="zakazivanje-forma">
           <div className="forma-sekcija">
             <h3>-- KORAK 1: IZBOR USLUGE --</h3>
-            <p>Ovde ce biti lista usluga...</p>
+            {USLUGE_LISTA.map((u) => (
+              <label
+                key={u.naziv}
+                className={`usluga-opcija ${izabranaUsluga === u.naziv ? "izabrana" : ""}`}
+              >
+                <input
+                  type="radio"
+                  name="usluga"
+                  value={u.naziv}
+                  checked={izabranaUsluga === u.naziv}
+                  onChange={() => setIzabranaUsluga(u.naziv)}
+                />
+                <span>{u.naziv}</span>
+                <span className="usluga-cena">od {u.cena}</span>
+              </label>
+            ))}
           </div>
 
           <div className="forma-sekcija">
@@ -28,7 +54,10 @@ export default function Zakazivanje() {
 
         <div className="pregled-panel">
           <h3>-- PREGLED TERMINA --</h3>
-          <p>Ovde ce biti pregled...</p>
+          <div className="pregled-red">
+            <small>Izabrana usluga:</small>
+            <strong>{izabranaUsluga || "—"}</strong>
+          </div>
         </div>
       </div>
     </div>
