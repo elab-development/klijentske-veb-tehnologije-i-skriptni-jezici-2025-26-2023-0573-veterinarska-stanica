@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import type { Korisnik, Ljubimac, Termin } from "../models/types";
 
 interface AppContextType {
@@ -11,6 +11,8 @@ interface AppContextType {
   odjavi: () => void;
   azurirajKorisnika: (k: Korisnik) => void;
   dodajLjubimca: (l: Omit<Ljubimac, "id">) => void;
+  otkaziTermin: (id: number) => void;
+  dodajTermin: (t: Omit<Termin, "id">) => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -50,6 +52,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [ljubimci, setLjubimci] = useState<Ljubimac[]>(pocetniLjubimci);
   const [termini, setTermini] = useState<Termin[]>(pocetniTermini);
 
+  // Funkcije za app
+
   const prijavi = (email: string, lozinka: string): boolean => {
     if (email === "test@mail.com" && lozinka === "sifra123") {
       setJeUlogovan(true);
@@ -68,6 +72,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setLjubimci((prev) => [...prev, { ...l, id: Date.now() }]);
   };
 
+  const otkaziTermin = (id: number) => {
+    setTermini((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  const dodajTermin = (t: Omit<Termin, "id">) => {
+    setTermini((prev) => [...prev, { ...t, id: Date.now() }]);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -79,9 +91,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
         odjavi,
         azurirajKorisnika,
         dodajLjubimca,
+        otkaziTermin,
+        dodajTermin,
       }}
     >
       {children}
     </AppContext.Provider>
   );
+}
+
+export function useApp() {
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error("Greska");
+  return ctx;
 }
