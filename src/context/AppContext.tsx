@@ -9,6 +9,8 @@ interface AppContextType {
   termini: Termin[];
   prijavi: (email: string, lozinka: string) => boolean;
   odjavi: () => void;
+  azurirajKorisnika: (k: Korisnik) => void;
+  dodajLjubimca: (l: Omit<Ljubimac, "id">) => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -58,9 +60,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const odjavi = () => setJeUlogovan(false);
 
+  const azurirajKorisnika = (k: Korisnik) => {
+    setKorisnik(k);
+  };
+
+  const dodajLjubimca = (l: Omit<Ljubimac, "id">) => {
+    setLjubimci((prev) => [...prev, { ...l, id: Date.now() }]);
+  };
+
   return (
     <AppContext.Provider
-      value={{ korisnik, jeUlogovan, ljubimci, termini, prijavi, odjavi }}
+      value={{
+        korisnik,
+        jeUlogovan,
+        ljubimci,
+        termini,
+        prijavi,
+        odjavi,
+        azurirajKorisnika,
+        dodajLjubimca,
+      }}
     >
       {children}
     </AppContext.Provider>
