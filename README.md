@@ -1,73 +1,179 @@
-# React + TypeScript + Vite
+# Veterinarska ambulanta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikacija za veterinarsku ambulantu napravljena u okviru projekta iz predmeta **Klijentske veb tehnologije i skriptni jezici**.
 
-Currently, two official plugins are available:
+Aplikacija omogućava prikaz osnovnih stranica veterinarske stanice, rad sa korisnikom, ljubimcima, uslugama i zakazivanjem veterinarskih termina.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tehnologije
 
-## React Compiler
+Projekat je rađen korišćenjem sledećih tehnologija:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- React Router DOM
+- CSS
 
-## Expanding the ESLint configuration
+## Pokretanje projekta
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pre pokretanja potrebno je instalirati sve zavisnosti:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Nakon toga se aplikacija pokreće komandom:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Aplikacija se zatim otvara u browseru na adresi koju prikaže terminal, najčešće:
+
+```txt
+http://localhost:5173/
+```
+
+## Instalacija React Router-a
+
+Ako `react-router-dom` nije instaliran, instalira se komandom:
+
+```bash
+npm install react-router-dom
+```
+
+## Struktura projekta
+
+Osnovna struktura projekta:
+
+```txt
+src/
+├── components/
+├── context/
+│   └── AppContext.tsx
+├── models/
+│   └── types.ts
+├── pages/
+│   ├── Zakazivanje.tsx
+│   └── Zakazivanje.css
+├── App.tsx
+├── App.css
+└── main.tsx
+```
+
+## Opis važnih delova
+
+### `src/models/types.ts`
+
+U ovom fajlu se nalaze TypeScript interfejsi koji definišu strukturu podataka u aplikaciji.
+
+Primeri modela:
+
+- `Korisnik` — podaci o korisniku
+- `Ljubimac` — podaci o ljubimcu
+- `Usluga` — podaci o veterinarskoj usluzi
+- `Termin` — podaci o zakazanom terminu
+- `Recenzija` — podaci o recenziji korisnika
+
+Ovi tipovi omogućavaju da TypeScript proverava da li se podaci koriste ispravno kroz aplikaciju.
+
+### `src/context/AppContext.tsx`
+
+Ovaj fajl služi za globalno stanje aplikacije.
+
+U njemu se pravi:
+
+- `AppContext` — zajednički prostor za podatke aplikacije
+- `AppProvider` — komponenta koja obavija aplikaciju i daje joj podatke
+- `useApp` — pomoćna funkcija preko koje druge komponente koriste podatke iz konteksta
+
+Podaci se čuvaju pomoću `useState`, jer mogu da se menjaju tokom rada aplikacije.
+
+U kontekstu se trenutno čuvaju:
+
+- korisnik
+- informacija da li je korisnik ulogovan
+- lista ljubimaca
+- lista termina
+
+Takođe postoje funkcije za:
+
+- prijavu korisnika
+- odjavu korisnika
+- ažuriranje korisnika
+- dodavanje ljubimca
+- dodavanje termina
+- otkazivanje termina
+
+### `src/pages/Zakazivanje.tsx`
+
+Stranica za zakazivanje veterinarskog termina.
+
+Trenutno sadrži osnovni raspored stranice:
+
+- zaglavlje stranice
+- deo za izbor usluge
+- deo za izbor ljubimca
+- deo za izbor datuma i vremena
+- panel za pregled termina
+
+Ova stranica predstavlja osnovu na koju se kasnije dodaje funkcionalnost za izbor usluge, ljubimca i potvrdu termina.
+
+### `src/App.tsx`
+
+Glavna komponenta aplikacije.
+
+U ovom fajlu se podešava koje stranice se prikazuju korisniku. Ako se koristi `react-router-dom`, ovde se definišu rute aplikacije.
+
+Primer rute za stranicu zakazivanja:
+
+```tsx
+<Route path="/zakazivanje" element={<Zakazivanje />} />
+```
+
+To znači da se stranica `Zakazivanje` prikazuje kada korisnik ode na adresu:
+
+```txt
+http://localhost:5173/zakazivanje
+```
+
+## Dostupne stranice
+
+Trenutno je dodata stranica:
+
+```txt
+/zakazivanje
+```
+
+Stranica prikazuje osnovni izgled forme za zakazivanje veterinarskog termina.
+
+## Test korisnik
+
+Za prijavu u aplikaciju koristi se test nalog:
+
+```txt
+Email: test@mail.com
+Lozinka: sifra123
+```
+
+## Napomene za razvoj
+
+Tok rada na projektu:
+
+1. Prvo se pravi osnovna struktura projekta.
+2. Zatim se dodaju modeli u `types.ts`.
+3. Nakon toga se pravi `AppContext.tsx` za globalno stanje.
+4. Zatim se dodaju stranice i komponente.
+5. Na kraju se povezuju stranice preko `App.tsx` i ruta.
+
+Kod je podeljen na manje celine kako bi bio pregledniji i lakši za razumevanje.
+
+## Autor
+
+Projekat je napravljen za potrebe fakultetskog projekta iz predmeta Klijentske veb tehnologije i skriptni jezici.
+
+---
+
+## Napomena o izradi
+
+Ovaj README fajl je generisan uz pomoć ChatGPT-a, na osnovu opisa projekta i strukture aplikacije.
