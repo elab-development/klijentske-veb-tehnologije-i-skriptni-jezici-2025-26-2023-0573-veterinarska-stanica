@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import type { ReactNode } from "react";
+import { createContext, useState } from "react";
 import type { Korisnik, Ljubimac, Termin } from "../models/types";
 
 interface AppContextType {
@@ -31,3 +32,23 @@ const pocetniTermini: Termin[] = [
     status: "Na čekanju",
   },
 ];
+
+export function AppProvider({ children }: { children: ReactNode }) {
+  const [korisnik, setKorisnik] = useState<Korisnik | null>({
+    ime: "Sara",
+    prezime: "Ječmenica",
+    email: "sara@email.com",
+    telefon: "+381 64 1234567",
+    adresa: "Cara Dušana 12, Pančevo",
+  });
+
+  const [jeUlogovan, setJeUlogovan] = useState(false);
+  const [ljubimci, setLjubimci] = useState<Ljubimac[]>(pocetniLjubimci);
+  const [termini, setTermini] = useState<Termin[]>(pocetniTermini);
+
+  return (
+    <AppContext.Provider value={{ korisnik, jeUlogovan, ljubimci, termini }}>
+      {children}
+    </AppContext.Provider>
+  );
+}
