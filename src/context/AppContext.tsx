@@ -7,6 +7,8 @@ interface AppContextType {
   jeUlogovan: boolean;
   ljubimci: Ljubimac[];
   termini: Termin[];
+  prijavi: (email: string, lozinka: string) => boolean;
+  odjavi: () => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -46,8 +48,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [ljubimci, setLjubimci] = useState<Ljubimac[]>(pocetniLjubimci);
   const [termini, setTermini] = useState<Termin[]>(pocetniTermini);
 
+  const prijavi = (email: string, lozinka: string): boolean => {
+    if (email === "test@mail.com" && lozinka === "sifra123") {
+      setJeUlogovan(true);
+      return true;
+    }
+    return false;
+  };
+
+  const odjavi = () => setJeUlogovan(false);
+
   return (
-    <AppContext.Provider value={{ korisnik, jeUlogovan, ljubimci, termini }}>
+    <AppContext.Provider
+      value={{ korisnik, jeUlogovan, ljubimci, termini, prijavi, odjavi }}
+    >
       {children}
     </AppContext.Provider>
   );
