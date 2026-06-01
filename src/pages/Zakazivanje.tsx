@@ -9,8 +9,16 @@ const USLUGE_LISTA = [
   { naziv: "Ultrazvuk", cena: "4.000 din" },
 ];
 
+const TEST_LJUBIMCI = [
+  { id: 1, ime: "Reks", vrsta: "Pas", rasa: "Labrador", starost: 4 },
+  { id: 2, ime: "Maza", vrsta: "Mačka", rasa: "Persijska", starost: 2 },
+];
+
 export default function Zakazivanje() {
   const [izabranaUsluga, setIzabranaUsluga] = useState("");
+  const [izabranLjubimac, setIzabranLjubimac] = useState<number | null>(null);
+
+  const ljubimacObj = TEST_LJUBIMCI.find((l) => l.id === izabranLjubimac);
 
   return (
     <div className="zakazivanje-stranica">
@@ -43,7 +51,24 @@ export default function Zakazivanje() {
 
           <div className="forma-sekcija">
             <h3>-- KORAK 1B: IZBOR LJUBIMCA --</h3>
-            <p>Ovde ce biti lista ljubimaca...</p>
+            <div className="ljubimci-red">
+              {TEST_LJUBIMCI.map((l) => (
+                <div
+                  key={l.id}
+                  className={`ljubimac-opcija ${izabranLjubimac === l.id ? "izabran" : ""}`}
+                  onClick={() => setIzabranLjubimac(l.id)}
+                >
+                  <div className="lj-slika">
+                    {l.vrsta === "Pas" ? "🐶" : "🐱"}
+                  </div>
+                  <strong>{l.ime}</strong>
+                  <span className="tag-l">{l.vrsta}</span>
+                  <p>
+                    {l.rasa}, {l.starost} god.
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="forma-sekcija">
@@ -57,6 +82,12 @@ export default function Zakazivanje() {
           <div className="pregled-red">
             <small>Izabrana usluga:</small>
             <strong>{izabranaUsluga || "—"}</strong>
+          </div>
+          <div className="pregled-red">
+            <small>Ljubimac:</small>
+            <strong>
+              {ljubimacObj ? `${ljubimacObj.ime} (${ljubimacObj.rasa})` : "—"}
+            </strong>
           </div>
         </div>
       </div>

@@ -96,3 +96,42 @@
 .pregled-red strong {
   font-size: 14px;
 }
+
+.ljubimci-red {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ljubimac-opcija {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  width: 130px;
+}
+.ljubimac-opcija.izabran {
+  border-color: #4f378b;
+  background: #f9f5ff;
+}
+.ljubimac-opcija .lj-slika {
+  font-size: 2rem;
+}
+.ljubimac-opcija strong {
+  display: block;
+  font-size: 13px;
+  margin: 4px 0;
+}
+.ljubimac-opcija p {
+  font-size: 11px;
+  color: #666;
+  margin: 4px 0;
+}
+.tag-l {
+  background: #ede0ff;
+  color: #4f378b;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-block;
+}
