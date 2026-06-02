@@ -268,7 +268,8 @@
   background-color: white;
 }
 
-.potvrdi-btn {
+.potvrdi-btn,
+.nazad-btn {
   width: 100%;
   padding: 14px;
   background: #4f378b;
@@ -326,10 +327,11 @@
 }
 .uspeh-ikona {
   font-size: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: 60px;
 }
 .uspeh-box h2 {
   margin-bottom: 10px;
+  color: #333;
 }
 .uspeh-box p {
   color: #666;
