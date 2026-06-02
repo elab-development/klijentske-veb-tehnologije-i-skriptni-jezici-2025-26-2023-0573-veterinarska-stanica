@@ -14,11 +14,58 @@ const TEST_LJUBIMCI = [
   { id: 2, ime: "Maza", vrsta: "Mačka", rasa: "Persijska", starost: 2 },
 ];
 
+const SLOBODNI_TERMINI = [
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+];
+const ZAUZETI = ["09:00", "11:00", "14:00"];
+
 export default function Zakazivanje() {
   const [izabranaUsluga, setIzabranaUsluga] = useState("");
   const [izabranLjubimac, setIzabranLjubimac] = useState<number | null>(null);
+  const [izabranDan, setIzabranDan] = useState<number | null>(null);
+  const [izabranoVreme, setIzabranoVreme] = useState("");
+  const [napomena, setNapomena] = useState("");
+  const [potvrdjeno, setPotvrdjeno] = useState(false);
 
   const ljubimacObj = TEST_LJUBIMCI.find((l) => l.id === izabranLjubimac);
+  const uslugaObj = USLUGE_LISTA.find((u) => u.naziv === izabranaUsluga);
+  const mozePotvrditi =
+    izabranaUsluga !== "" &&
+    izabranLjubimac !== null &&
+    izabranDan !== null &&
+    izabranoVreme !== "";
+
+  const prviDan = 2;
+  const daniUMesecu = 31;
+
+  if (potvrdjeno) {
+    return (
+      <div className="zakazivanje-stranica">
+        <div className="uspeh-box">
+          <div className="uspeh-ikona">✅</div>
+          <h2>Termin uspešno zakazan!</h2>
+          <p>Poslaćemo vam potvrdu na email adresu.</p>
+          <button className="nazad-btn" onClick={() => setPotvrdjeno(false)}>
+            Zakaži novi termin
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="zakazivanje-stranica">
@@ -69,11 +116,87 @@ export default function Zakazivanje() {
                 </div>
               ))}
             </div>
+            <div className="napomena-polje">
+              <label>Napomena (simptomi, posebni zahtevi):</label>
+              <textarea
+                placeholder="Unesite napomenu za veterinara..."
+                value={napomena}
+                onChange={(e) => setNapomena(e.target.value)}
+              />
+            </div>
           </div>
 
           <div className="forma-sekcija">
             <h3>-- KORAK 2: DATUM I VREME --</h3>
-            <p>Ovde ce biti kalendar...</p>
+            <div className="kalendar-layout">
+              <div>
+                <div className="kalendar-header">Maj 2026</div>
+                <div className="kalendar-grid">
+                  {["Pon", "Uto", "Sre", "Čet", "Pet", "Sub", "Ned"].map(
+                    (d) => (
+                      <div key={d} className="dan-naziv">
+                        {d}
+                      </div>
+                    ),
+                  )}
+                  {Array.from({ length: prviDan }).map((_, i) => (
+                    <div key={`p${i}`} />
+                  ))}
+                  {Array.from({ length: daniUMesecu }, (_, i) => i + 1).map(
+                    (d) => (
+                      <div
+                        key={d}
+                        className={`dan ${izabranDan === d ? "izabran-dan" : ""} ${d === 8 ? "danas" : ""}`}
+                        onClick={() => setIzabranDan(d)}
+                      >
+                        {d}
+                      </div>
+                    ),
+                  )}
+                </div>
+                <div className="legenda">
+                  <span className="leg-izabran"></span>Izabran
+                  <span className="leg-zauzet"></span>Zauzeto
+                  <span className="leg-danas"></span>Danas
+                </div>
+              </div>
+
+              {izabranDan && (
+                <div className="termini-lista">
+                  <h4>
+                    Slobodni termini — {izabranDan < 10 ? "0" : ""}
+                    {izabranDan}. maj:
+                  </h4>
+                  <div className="termini-grid">
+                    {SLOBODNI_TERMINI.map((t) => (
+                      <button
+                        key={t}
+                        className={`termin-btn ${ZAUZETI.includes(t) ? "zauzet" : ""} ${izabranoVreme === t ? "izabrano-v" : ""}`}
+                        disabled={ZAUZETI.includes(t)}
+                        onClick={() => setIzabranoVreme(t)}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="forma-sekcija">
+            <button
+              className={`potvrdi-btn ${mozePotvrditi ? "" : "disabled"}`}
+              disabled={!mozePotvrditi}
+              onClick={() => setPotvrdjeno(true)}
+            >
+              POTVRDI TERMIN
+            </button>
+            {!mozePotvrditi && (
+              <p className="upozorenje">
+                Molimo izaberite uslugu, ljubimca, datum i vreme.
+              </p>
+            )}
           </div>
         </div>
 
@@ -88,6 +211,29 @@ export default function Zakazivanje() {
             <strong>
               {ljubimacObj ? `${ljubimacObj.ime} (${ljubimacObj.rasa})` : "—"}
             </strong>
+          </div>
+          <div className="pregled-red">
+            <small>Datum i vreme:</small>
+            <strong>
+              {izabranDan && izabranoVreme
+                ? `${izabranDan}.01.2025. ${izabranoVreme}`
+                : "—"}
+            </strong>
+          </div>
+          <div className="pregled-red">
+            <small>Procenjena cena:</small>
+            <strong>{uslugaObj ? `od ${uslugaObj.cena}` : "—"}</strong>
+          </div>
+          <div className="napomene-box">
+            <strong>ℹ Važne napomene:</strong>
+            <p>• Molimo vas da stignete 5 min pre termina</p>
+            <p>• Potvrditi ili otkazati termin možete najkasnije 2h pre</p>
+            <p>• Potvrdni SMS će biti poslat na vaš broj</p>
+          </div>
+          <div className="kontakt-box">
+            <strong>Pitanja?</strong>
+            <p>📞 +381 13 123 456</p>
+            <p>✉ info@vetsts.rs</p>
           </div>
         </div>
       </div>
