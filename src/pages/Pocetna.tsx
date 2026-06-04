@@ -57,18 +57,6 @@ export default function Pocetna() {
   return (
     <div className="page-wrapper">
       
-      <nav className="navbar">
-        <div className="nav-logo">
-          <span className="logo-text">STS VET</span>
-          <span className="logo-sub">vet</span>
-        </div>
-        <ul className="nav-links">
-          <li><a href="/" className="nav-active">Početna</a></li>
-          <li><a href="/usluge">Usluge</a></li>
-          <li><a href="/kontakt">Kontakt</a></li>
-          <li><a href="/prijava" className="nav-btn">Prijava</a></li>
-        </ul>
-      </nav>
 
       
       <section className="hero">
