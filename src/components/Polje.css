@@ -1,0 +1,22 @@
+.polje {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.polje-label {
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+}
+.polje-input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.polje-input:focus {
+  border-color: #4f378b;
+}

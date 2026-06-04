@@ -1,0 +1,88 @@
+.navbar {
+  background-color: #6750a4;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-logo {
+  text-decoration: none;
+}
+.logo-box {
+  background-color: #7965af;
+  border-radius: 8px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+.logo-tekst {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.logo-godina {
+  color: #d4b8ff;
+  font-size: 10px;
+}
+.navbar-linkovi {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.navbar-linkovi a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+.navbar-linkovi a:hover {
+  text-decoration: underline;
+}
+.dugme-prijava {
+  border: 2px solid white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: white !important;
+}
+.korisnik-meni {
+  position: relative;
+}
+.korisnik-dugme {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  overflow: hidden;
+}
+.dropdown a,
+.dropdown button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  color: #333;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.dropdown a:hover,
+.dropdown button:hover {
+  background: #f0e6ff;
+}

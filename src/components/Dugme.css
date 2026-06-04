@@ -1,0 +1,33 @@
+.dugme {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  letter-spacing: 0.5px;
+}
+.dugme:hover:not(:disabled) {
+  opacity: 0.85;
+}
+.dugme:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.dugme-primarno {
+  background-color: #4f378b;
+  color: white;
+}
+.dugme-sekundarno {
+  background-color: #e8b84b;
+  color: #333;
+}
+.dugme-opasnost {
+  background: none;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+}
+.full-width {
+  width: 100%;
+}

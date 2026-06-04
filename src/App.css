@@ -11,3 +11,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app-content {
+  flex: 1;
+}
