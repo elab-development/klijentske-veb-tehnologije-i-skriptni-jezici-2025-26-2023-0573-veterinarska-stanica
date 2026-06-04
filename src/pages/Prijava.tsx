@@ -9,17 +9,12 @@ export default function Login() {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Login attempt:", { email, rememberMe });
-    
   };
 
   return (
     <div className="page-wrapper">
-      
-
-      
       <main className="main">
         <div className="login-card">
-          
           <div className="card-image">
             <img
               src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=80"
@@ -27,12 +22,13 @@ export default function Login() {
             />
           </div>
 
-          
           <div className="card-body">
             <h1 className="card-title">PRIJAVA KORISNIKA</h1>
 
             <div className="field">
-              <label htmlFor="email">Email adresa: <span className="required">*</span></label>
+              <label htmlFor="email">
+                Email adresa: <span className="required">*</span>
+              </label>
               <input
                 id="email"
                 type="email"
@@ -44,7 +40,9 @@ export default function Login() {
             </div>
 
             <div className="field">
-              <label htmlFor="password">Lozinka: <span className="required">*</span></label>
+              <label htmlFor="password">
+                Lozinka: <span className="required">*</span>
+              </label>
               <input
                 id="password"
                 type="password"
@@ -70,12 +68,13 @@ export default function Login() {
 
             <div className="card-links">
               <a href="#">Zaboravili ste lozinku?</a>
-            <p>Nemate nalog? <a href="/registracija">Registrujte se ovde</a></p>            </div>
+              <p>
+                Nemate nalog? <a href="/registracija">Registrujte se ovde</a>
+              </p>{" "}
+            </div>
           </div>
         </div>
       </main>
-
-      
     </div>
   );
 }
