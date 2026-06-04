@@ -92,7 +92,7 @@ export default function Registracija() {
           </div>
         </section>
 
-        {/* Section 2 – Podaci za nalog */}
+        
         <section className="card">
           <h2 className="section-title">-- PODACI ZA NALOG --</h2>
 
@@ -130,7 +130,7 @@ export default function Registracija() {
           <p className="hint">Lozinka mora imati najmanje 8 karaktera</p>
         </section>
 
-        {/* Section 3 – Informacije o ljubimcu */}
+        
         <section className="card">
           <h2 className="section-title">-- INFORMACIJE O LJUBIMCU (opcionо) --</h2>
 
@@ -158,7 +158,7 @@ export default function Registracija() {
           <p className="hint">* Više ljubimaca možete dodati u profilu</p>
         </section>
 
-        {/* Checkboxes */}
+    
         <div className="checkboxes">
           <label className="check-label">
             <input
@@ -180,15 +180,14 @@ export default function Registracija() {
             />
             <span>Želim da primam obaveštenja o akcijama i novostima</span>
           </label>
-        </div>
+          </div>   
 
-        {/* Submit */}
         <button className="btn-register" onClick={handleSubmit}>
           REGISTRUJ SE
         </button>
 
         <p className="login-link">
-          Već imate nalog? <a href="#">Prijavite se ovde</a>
+          Već imate nalog? <a href="/prijava">Prijavite se ovde</a>
         </p>
       </main>
 
