@@ -1,8 +1,7 @@
-/* ─── Design tokens ─── */
 :root {
-  --bg:           #e8d5f0;        /* lavender page background */
-  --card-bg:      #c8ddb0;        /* sage-green card */
-  --purple:       #7b3fa0;        /* primary brand purple */
+  --bg:           #e8d5f0;        
+  --card-bg:      #c8ddb0;        
+  --purple:       #7b3fa0;        
   --purple-light: #9b5fc0;
   --purple-btn:   #8b4fb8;
   --white:        #ffffff;
@@ -17,12 +16,10 @@
   --radius-btn:   8px;
 }
 
-/* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ─── Page layout ─── */
 .page-wrapper {
   min-height: 100vh;
   background-color: var(--bg);
@@ -32,7 +29,6 @@ ul { list-style: none; }
   color: var(--text-dark);
 }
 
-/* ─── Navbar ─── */
 .navbar {
   display: flex;
   align-items: center;
@@ -92,7 +88,6 @@ ul { list-style: none; }
   font-weight: 600;
 }
 
-/* ─── Main ─── */
 .main {
   flex: 1;
   display: flex;
@@ -101,7 +96,6 @@ ul { list-style: none; }
   padding: 2rem 1rem;
 }
 
-/* ─── Login card ─── */
 .login-card {
   background: var(--card-bg);
   border-radius: var(--radius-card);
@@ -111,7 +105,6 @@ ul { list-style: none; }
   box-shadow: 0 8px 32px rgba(100, 40, 140, 0.15);
 }
 
-/* Hero image */
 .card-image {
   width: 100%;
   height: 170px;
@@ -126,7 +119,6 @@ ul { list-style: none; }
   display: block;
 }
 
-/* Form body */
 .card-body {
   padding: 2rem 2.5rem 2.5rem;
   display: flex;
@@ -143,7 +135,6 @@ ul { list-style: none; }
   margin-bottom: 0.4rem;
 }
 
-/* ─── Form fields ─── */
 .field {
   display: flex;
   flex-direction: column;
@@ -177,7 +168,6 @@ ul { list-style: none; }
 
 .field input::placeholder { color: #aaa; }
 
-/* ─── Remember me ─── */
 .remember-label {
   display: flex;
   align-items: center;
@@ -194,7 +184,6 @@ ul { list-style: none; }
   cursor: pointer;
 }
 
-/* ─── Login button ─── */
 .btn-login {
   width: 100%;
   padding: 13px;
@@ -217,7 +206,6 @@ ul { list-style: none; }
 
 .btn-login:active { transform: scale(0.98); }
 
-/* ─── Card links ─── */
 .card-links {
   display: flex;
   flex-direction: column;
@@ -238,7 +226,6 @@ ul { list-style: none; }
 
 .card-links p { color: var(--text-muted); }
 
-/* ─── Footer ─── */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -262,7 +249,6 @@ ul { list-style: none; }
 
 .footer-links a:hover { color: var(--purple); }
 
-/* ─── Responsive ─── */
 @media (max-width: 640px) {
   .navbar { padding: 0 1rem; }
   .nav-links { gap: 1rem; }

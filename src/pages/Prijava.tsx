@@ -9,17 +9,17 @@ export default function Login() {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Login attempt:", { email, rememberMe });
-    // TODO: connect to auth logic
+    
   };
 
   return (
     <div className="page-wrapper">
       
 
-      {/* ── Main content ── */}
+      
       <main className="main">
         <div className="login-card">
-          {/* Hero image strip */}
+          
           <div className="card-image">
             <img
               src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=80"
@@ -27,7 +27,7 @@ export default function Login() {
             />
           </div>
 
-          {/* Form area */}
+          
           <div className="card-body">
             <h1 className="card-title">PRIJAVA KORISNIKA</h1>
 
