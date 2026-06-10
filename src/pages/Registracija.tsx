@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useApp } from "../context/AppContext";
 import "./Registracija.css";
 
 export default function Registracija() {
+  const { registruj } = useApp();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     ime: "",
     prezime: "",
@@ -16,30 +21,62 @@ export default function Registracija() {
     zeliObavjestenja: false,
   });
 
-  const update = (field: string, value: string | boolean) =>
-    setForm((prev) => ({ ...prev, [field]: value }));
+  const update = (field: string, value: string | boolean) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    if (
+      form.ime.trim() === "" ||
+      form.prezime.trim() === "" ||
+      form.telefon.trim() === "" ||
+      form.email.trim() === "" ||
+      form.lozinka.trim() === ""
+    ) {
+      alert("Popunite sva obavezna polja.");
+      return;
+    }
+
     if (!form.prihvataUslove) {
       alert("Morate prihvatiti uslove korišćenja.");
       return;
     }
+
     if (form.lozinka.length < 8) {
       alert("Lozinka mora imati najmanje 8 karaktera.");
       return;
     }
+
     if (form.lozinka !== form.potvrdiLozinku) {
       alert("Lozinke se ne podudaraju.");
       return;
     }
-    console.log("Registracija:", form);
+
+    const uspesnaRegistracija = registruj(
+      {
+        ime: form.ime,
+        prezime: form.prezime,
+        telefon: form.telefon,
+        adresa: form.adresa,
+        email: form.email,
+      },
+      form.lozinka,
+    );
+
+    if (uspesnaRegistracija) {
+      alert("Uspešno ste se registrovali.");
+      navigate("/zakazivanje");
+    }
   };
 
   return (
     <div className="page-wrapper">
       <main className="main">
         <h1 className="page-title">REGISTRACIJA KORISNIKA</h1>
+
         <p className="page-subtitle">Molimo popunite sva obavezna polja (*)</p>
 
         <section className="card">
@@ -50,6 +87,7 @@ export default function Registracija() {
               <label>
                 Ime: <span className="req">*</span>
               </label>
+
               <input
                 type="text"
                 placeholder="Unesite ime"
@@ -57,10 +95,12 @@ export default function Registracija() {
                 onChange={(e) => update("ime", e.target.value)}
               />
             </div>
+
             <div className="field">
               <label>
                 Prezime: <span className="req">*</span>
               </label>
+
               <input
                 type="text"
                 placeholder="Unesite prezime"
@@ -74,6 +114,7 @@ export default function Registracija() {
             <label>
               Broj telefona: <span className="req">*</span>
             </label>
+
             <input
               type="tel"
               placeholder="+381 6x xxxxxxx"
@@ -84,6 +125,7 @@ export default function Registracija() {
 
           <div className="field">
             <label>Adresa:</label>
+
             <input
               type="text"
               placeholder="Ulica i broj, grad"
@@ -100,6 +142,7 @@ export default function Registracija() {
             <label>
               Email adresa: <span className="req">*</span>
             </label>
+
             <input
               type="email"
               placeholder="korisnik@email.com"
@@ -113,6 +156,7 @@ export default function Registracija() {
               <label>
                 Lozinka: <span className="req">*</span>
               </label>
+
               <input
                 type="password"
                 placeholder="••••••••"
@@ -120,10 +164,12 @@ export default function Registracija() {
                 onChange={(e) => update("lozinka", e.target.value)}
               />
             </div>
+
             <div className="field">
               <label>
                 Potvrdi lozinku: <span className="req">*</span>
               </label>
+
               <input
                 type="password"
                 placeholder="••••••••"
@@ -143,6 +189,7 @@ export default function Registracija() {
               checked={form.prihvataUslove}
               onChange={(e) => update("prihvataUslove", e.target.checked)}
             />
+
             <span>
               Prihvatam <a href="#">uslove korišćenja</a> i{" "}
               <a href="#">politiku privatnosti</a>{" "}
@@ -156,16 +203,17 @@ export default function Registracija() {
               checked={form.zeliObavjestenja}
               onChange={(e) => update("zeliObavjestenja", e.target.checked)}
             />
+
             <span>Želim da primam obaveštenja o akcijama i novostima</span>
           </label>
         </div>
 
-        <button className="btn-register" onClick={handleSubmit}>
+        <button type="button" className="btn-register" onClick={handleSubmit}>
           REGISTRUJ SE
         </button>
 
         <p className="login-link">
-          Već imate nalog? <a href="/prijava">Prijavite se ovde</a>
+          Već imate nalog? <Link to="/prijava">Prijavite se ovde</Link>
         </p>
       </main>
     </div>
