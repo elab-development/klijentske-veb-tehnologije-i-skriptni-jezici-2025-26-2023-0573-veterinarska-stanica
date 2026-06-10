@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AppProvider } from "./context/AppContext";
+
+import { AppProvider, useApp } from "./context/AppContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -11,6 +13,16 @@ import Pocetna from "./pages/Pocetna";
 
 import "./App.css";
 
+function ZasticenaRuta({ children }: { children: ReactNode }) {
+  const { jeUlogovan } = useApp();
+
+  if (!jeUlogovan) {
+    return <Navigate to="/prijava" replace />;
+  }
+
+  return children;
+}
+
 function App() {
   return (
     <AppProvider>
@@ -20,10 +32,19 @@ function App() {
 
           <div className="app-content">
             <Routes>
+              <Route path="/" element={<Pocetna />} />
               <Route path="/prijava" element={<Prijava />} />
               <Route path="/registracija" element={<Registracija />} />
-              <Route path="/zakazivanje" element={<Zakazivanje />} />
-              <Route path="/" element={<Pocetna />} />
+
+              <Route
+                path="/zakazivanje"
+                element={
+                  <ZasticenaRuta>
+                    <Zakazivanje />
+                  </ZasticenaRuta>
+                }
+              />
+
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
