@@ -19,7 +19,7 @@ const AppContext = createContext<AppContextType | null>(null);
 
 const pocetniLjubimci: Ljubimac[] = [
   { id: 1, ime: "Reks", vrsta: "Pas", rasa: "Labrador", starost: 4 },
-  { id: 1, ime: "Maza", vrsta: "Mačka", rasa: "Persijska", starost: 2 },
+  { id: 2, ime: "Maza", vrsta: "Mačka", rasa: "Persijska", starost: 2 },
 ];
 
 const pocetniTermini: Termin[] = [
