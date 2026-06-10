@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Zakazivanje.css";
+import { useApp } from "../context/AppContext";
 
 const USLUGE_LISTA = [
   { naziv: "Opšti pregled i dijagnoza", cena: "1.500 din" },
@@ -7,11 +8,6 @@ const USLUGE_LISTA = [
   { naziv: "Sterilizacija / Kastracija", cena: "6.000 din" },
   { naziv: "Rendgen snimanje", cena: "3.500 din" },
   { naziv: "Ultrazvuk", cena: "4.000 din" },
-];
-
-const TEST_LJUBIMCI = [
-  { id: 1, ime: "Reks", vrsta: "Pas", rasa: "Labrador", starost: 4 },
-  { id: 2, ime: "Maza", vrsta: "Mačka", rasa: "Persijska", starost: 2 },
 ];
 
 const SLOBODNI_TERMINI = [
@@ -34,6 +30,7 @@ const SLOBODNI_TERMINI = [
 const ZAUZETI = ["09:00", "11:00", "14:00"];
 
 export default function Zakazivanje() {
+  const { ljubimci } = useApp();
   const [izabranaUsluga, setIzabranaUsluga] = useState("");
   const [izabranLjubimac, setIzabranLjubimac] = useState<number | null>(null);
   const [izabranDan, setIzabranDan] = useState<number | null>(null);
@@ -41,7 +38,7 @@ export default function Zakazivanje() {
   const [napomena, setNapomena] = useState("");
   const [potvrdjeno, setPotvrdjeno] = useState(false);
 
-  const ljubimacObj = TEST_LJUBIMCI.find((l) => l.id === izabranLjubimac);
+  const ljubimacObj = ljubimci.find((l) => l.id === izabranLjubimac);
   const uslugaObj = USLUGE_LISTA.find((u) => u.naziv === izabranaUsluga);
   const mozePotvrditi =
     izabranaUsluga !== "" &&
@@ -99,7 +96,7 @@ export default function Zakazivanje() {
           <div className="forma-sekcija">
             <h3>-- KORAK 1B: IZBOR LJUBIMCA --</h3>
             <div className="ljubimci-red">
-              {TEST_LJUBIMCI.map((l) => (
+              {ljubimci.map((l) => (
                 <div
                   key={l.id}
                   className={`ljubimac-opcija ${izabranLjubimac === l.id ? "izabran" : ""}`}
