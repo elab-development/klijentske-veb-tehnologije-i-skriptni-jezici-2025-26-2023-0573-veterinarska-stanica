@@ -1,14 +1,39 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useApp } from "../context/AppContext";
 import "./Prijava.css";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+export default function Prijava() {
+  const { prijavi } = useApp();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log("Login attempt:", { email, rememberMe });
+  const [email, setEmail] = useState("");
+  const [lozinka, setLozinka] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [greska, setGreska] = useState("");
+
+  const handleSubmit = () => {
+    setGreska("");
+
+    if (email.trim() === "" || lozinka.trim() === "") {
+      setGreska("Unesite email adresu i lozinku.");
+      return;
+    }
+
+    const uspesnaPrijava = prijavi(email, lozinka);
+
+    if (!uspesnaPrijava) {
+      setGreska("Email adresa ili lozinka nisu ispravni.");
+      return;
+    }
+
+    if (rememberMe) {
+      localStorage.setItem("zapamceniEmail", email);
+    } else {
+      localStorage.removeItem("zapamceniEmail");
+    }
+
+    navigate("/zakazivanje");
   };
 
   return (
@@ -29,6 +54,7 @@ export default function Login() {
               <label htmlFor="email">
                 Email adresa: <span className="required">*</span>
               </label>
+
               <input
                 id="email"
                 type="email"
@@ -43,12 +69,13 @@ export default function Login() {
               <label htmlFor="password">
                 Lozinka: <span className="required">*</span>
               </label>
+
               <input
                 id="password"
                 type="password"
                 placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={lozinka}
+                onChange={(e) => setLozinka(e.target.value)}
                 autoComplete="current-password"
               />
             </div>
@@ -59,18 +86,23 @@ export default function Login() {
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
+
               <span>Zapamti me</span>
             </label>
 
-            <button className="btn-login" onClick={handleSubmit}>
+            {greska && <p className="login-greska">{greska}</p>}
+
+            <button type="button" className="btn-login" onClick={handleSubmit}>
               PRIJAVI SE
             </button>
 
             <div className="card-links">
               <a href="#">Zaboravili ste lozinku?</a>
+
               <p>
-                Nemate nalog? <a href="/registracija">Registrujte se ovde</a>
-              </p>{" "}
+                Nemate nalog?{" "}
+                <Link to="/registracija">Registrujte se ovde</Link>
+              </p>
             </div>
           </div>
         </div>
