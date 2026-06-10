@@ -34,25 +34,22 @@ export default function Registracija() {
       return;
     }
     console.log("Registracija:", form);
-    
   };
 
   return (
     <div className="page-wrapper">
-      
-
-      
       <main className="main">
         <h1 className="page-title">REGISTRACIJA KORISNIKA</h1>
         <p className="page-subtitle">Molimo popunite sva obavezna polja (*)</p>
 
-        
         <section className="card">
           <h2 className="section-title">-- LIČNI PODACI --</h2>
 
           <div className="row-2">
             <div className="field">
-              <label>Ime: <span className="req">*</span></label>
+              <label>
+                Ime: <span className="req">*</span>
+              </label>
               <input
                 type="text"
                 placeholder="Unesite ime"
@@ -61,7 +58,9 @@ export default function Registracija() {
               />
             </div>
             <div className="field">
-              <label>Prezime: <span className="req">*</span></label>
+              <label>
+                Prezime: <span className="req">*</span>
+              </label>
               <input
                 type="text"
                 placeholder="Unesite prezime"
@@ -72,7 +71,9 @@ export default function Registracija() {
           </div>
 
           <div className="field">
-            <label>Broj telefona: <span className="req">*</span></label>
+            <label>
+              Broj telefona: <span className="req">*</span>
+            </label>
             <input
               type="tel"
               placeholder="+381 6x xxxxxxx"
@@ -92,12 +93,13 @@ export default function Registracija() {
           </div>
         </section>
 
-        
         <section className="card">
           <h2 className="section-title">-- PODACI ZA NALOG --</h2>
 
           <div className="field">
-            <label>Email adresa: <span className="req">*</span></label>
+            <label>
+              Email adresa: <span className="req">*</span>
+            </label>
             <input
               type="email"
               placeholder="korisnik@email.com"
@@ -108,7 +110,9 @@ export default function Registracija() {
 
           <div className="row-2">
             <div className="field">
-              <label>Lozinka: <span className="req">*</span></label>
+              <label>
+                Lozinka: <span className="req">*</span>
+              </label>
               <input
                 type="password"
                 placeholder="••••••••"
@@ -117,7 +121,9 @@ export default function Registracija() {
               />
             </div>
             <div className="field">
-              <label>Potvrdi lozinku: <span className="req">*</span></label>
+              <label>
+                Potvrdi lozinku: <span className="req">*</span>
+              </label>
               <input
                 type="password"
                 placeholder="••••••••"
@@ -130,35 +136,6 @@ export default function Registracija() {
           <p className="hint">Lozinka mora imati najmanje 8 karaktera</p>
         </section>
 
-        
-        <section className="card">
-          <h2 className="section-title">-- INFORMACIJE O LJUBIMCU (opcionо) --</h2>
-
-          <div className="row-2">
-            <div className="field">
-              <label>Ime ljubimca:</label>
-              <input
-                type="text"
-                placeholder="npr. Reks"
-                value={form.imeLjubimca}
-                onChange={(e) => update("imeLjubimca", e.target.value)}
-              />
-            </div>
-            <div className="field">
-              <label>Vrsta:</label>
-              <input
-                type="text"
-                placeholder="[pas / mačka / ...]"
-                value={form.vrsta}
-                onChange={(e) => update("vrsta", e.target.value)}
-              />
-            </div>
-          </div>
-
-          <p className="hint">* Više ljubimaca možete dodati u profilu</p>
-        </section>
-
-    
         <div className="checkboxes">
           <label className="check-label">
             <input
@@ -168,7 +145,8 @@ export default function Registracija() {
             />
             <span>
               Prihvatam <a href="#">uslove korišćenja</a> i{" "}
-              <a href="#">politiku privatnosti</a> <span className="req">*</span>
+              <a href="#">politiku privatnosti</a>{" "}
+              <span className="req">*</span>
             </span>
           </label>
 
@@ -180,7 +158,7 @@ export default function Registracija() {
             />
             <span>Želim da primam obaveštenja o akcijama i novostima</span>
           </label>
-          </div>   
+        </div>
 
         <button className="btn-register" onClick={handleSubmit}>
           REGISTRUJ SE
@@ -190,8 +168,6 @@ export default function Registracija() {
           Već imate nalog? <a href="/prijava">Prijavite se ovde</a>
         </p>
       </main>
-
-      
     </div>
   );
 }
