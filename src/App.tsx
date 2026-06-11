@@ -12,6 +12,7 @@ import Zakazivanje from "./pages/Zakazivanje";
 import Pocetna from "./pages/Pocetna";
 import Usluge from "./pages/Usluge";
 import PojedinacnaUsluga from "./pages/PojedinacnaUsluga";
+import Kontakt from "./pages/Kontakt";
 
 import "./App.css";
 
@@ -39,6 +40,7 @@ function App() {
               <Route path="/registracija" element={<Registracija />} />
               <Route path="/usluge" element={<Usluge />} />
               <Route path="/usluga/:id" element={<PojedinacnaUsluga />} />
+              <Route path="/kontakt" element={<Kontakt />} />
 
               <Route
                 path="/zakazivanje"

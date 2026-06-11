@@ -110,9 +110,7 @@ export default function Pocetna() {
             </div>
           ))}
         </div>
-        <div className="center-btn">
-          <a href="/usluge" className="btn-outline-purple">POGLEDAJ SVE USLUGE</a>
-        </div>
+        
       </section>
 
       
