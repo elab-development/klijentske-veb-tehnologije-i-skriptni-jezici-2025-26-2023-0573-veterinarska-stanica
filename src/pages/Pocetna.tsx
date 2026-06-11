@@ -7,21 +7,21 @@ const usluge = [
     naziv: "Pregled i dijagnoza",
     opis: "Opšti pregled zdravstvenog stanja vašeg ljubimca.",
     cena: "od 1500 din",
-    slika: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80",
+    slika: "https://hastingsvet.com/wp-content/uploads/2024/09/Hastings-Veterinary-Hospital-Benefits-of-a-Recheck-Examination-Part-2-For-Cats.jpg",
   },
   {
     id: 2,
     naziv: "Vakcinacija",
     opis: "Zaštita ljubimca od zaraznih bolesti.",
     cena: "od 2000 din",
-    slika: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
+    slika: "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
   },
   {
     id: 3,
     naziv: "Hirurgija",
     opis: "Operativni zahvati u sterilnim uslovima.",
     cena: "od 8000 din",
-    slika: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
+    slika: "https://d2zp5xs5cp8zlg.cloudfront.net/image-42128-800.jpg",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Pocetna() {
       <section className="hero">
         <div className="hero-overlay" />
         <img
-          src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1400&q=80"
+          src="https://images.ctfassets.net/rt5zmd3ipxai/2qCzn1akKzWGBmYOL7G7fO/c1cc260af459013c7100183409d58b85/NVA-Clinic-dog-cat-vet-holding-center.jpeg"
           alt="Veterinar"
           className="hero-img"
         />
