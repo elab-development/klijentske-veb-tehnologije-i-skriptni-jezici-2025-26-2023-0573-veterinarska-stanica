@@ -127,7 +127,7 @@ export default function Kontakt() {
                   </span>
                   <br />
                   <span style={{ fontSize: 12, color: "#999" }}>
-                    Dostupno 24h / 7 dana
+                    Dostupno 24h / 7 dana u nedelji
                   </span>
                 </div>
               </div>
@@ -216,7 +216,7 @@ export default function Kontakt() {
                 id="ljubimac"
                 name="ljubimac"
                 type="text"
-                placeholder="Npr. Reks, Mića..."
+                placeholder="Npr. Reks, Maza..."
                 value={form.ljubimac}
                 onChange={handleChange}
               />
