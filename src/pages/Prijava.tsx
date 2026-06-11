@@ -42,7 +42,7 @@ export default function Prijava() {
         <div className="login-card">
           <div className="card-image">
             <img
-              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=80"
+              src="https://images.ctfassets.net/82d3r48zq721/1FSNHK1W5fkwxiZ66GFae6/79aed0ae7c3c07f5bc246d7351b84d3f/Dog-during-vet-visit_resized.jpg?w=800&q=80&fm=webp"
               alt="Veterinar s psom"
             />
           </div>
