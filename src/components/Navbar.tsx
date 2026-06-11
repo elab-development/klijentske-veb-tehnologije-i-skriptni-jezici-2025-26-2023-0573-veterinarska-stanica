@@ -41,7 +41,7 @@ export default function Navbar() {
             )}
           </div>
         ) : (
-          <Link to="/prijava" className="dugme-prijava">
+          <Link to="/prijava" className="btn-prijava">
             Prijava
           </Link>
         )}
