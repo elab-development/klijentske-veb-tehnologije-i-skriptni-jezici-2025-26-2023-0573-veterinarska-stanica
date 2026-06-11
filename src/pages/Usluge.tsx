@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Usluge.css";
+import { Link } from 'react-router-dom';
 
 
 interface Usluga {
@@ -12,10 +13,13 @@ interface Usluga {
   ocene: number;
   brojOcena: number;
   slika?: string;
+  opisDetaljno?: string[];
+  ukljucuje?: string[];
+  koraci?: { naslov: string; opis: string }[];
 }
 
 
-const SVE_USLUGE: Usluga[] = [
+export const SVE_USLUGE = [
   {
     id: 1,
     naziv: "Opšti pregled",
@@ -26,7 +30,26 @@ const SVE_USLUGE: Usluga[] = [
     ocene: 4,
     brojOcena: 26,
     slika: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
+
+    opisDetaljno: [
+      "Detaljan klinički pregled celokupnog zdravstvenog stanja.",
+      "Procena srca, pluća, kože, zuba i opšte kondicije."
+    ],
+
+    ukljucuje: [
+      "Pregled očiju i ušiju",
+      "Auskultacija srca i pluća",
+      "Palpacija abdomena",
+      "Procena opšteg stanja"
+    ],
+
+    koraci: [
+      { naslov: "Prijem", opis: "Registracija i kratka anamneza" },
+      { naslov: "Pregled", opis: "Veterinar obavlja kompletan pregled" },
+      { naslov: "Preporuke", opis: "Daje se terapija ili savet" }
+    ]
   },
+
   {
     id: 2,
     naziv: "Vakcinacija",
@@ -37,117 +60,316 @@ const SVE_USLUGE: Usluga[] = [
     ocene: 5,
     brojOcena: 13,
     slika: "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
+
+    opisDetaljno: [
+      "Vakcinacija štiti ljubimca od najčešćih zaraznih bolesti.",
+      "Program se prilagođava uzrastu i zdravstvenom stanju."
+    ],
+
+    ukljucuje: [
+      "Pregled pre vakcinacije",
+      "Primena vakcine",
+      "Saveti nakon vakcinacije"
+    ],
+
+    koraci: [
+      { naslov: "Pregled", opis: "Provera zdravstvenog stanja" },
+      { naslov: "Vakcinacija", opis: "Primena vakcine" },
+      { naslov: "Praćenje", opis: "Kratko zadržavanje nakon injekcije" }
+    ]
   },
+
   {
     id: 3,
     naziv: "Rendgen snimanje",
-    opis: "Dijagnostičko snimanje kostenog sistema i unutrašnjih organa.",
+    opis: "Dijagnostičko snimanje kostiju i unutrašnjih organa.",
     kategorija: "Dijagnostika",
     vrste: ["Pas", "Mačka"],
     cena: 3500,
     ocene: 4,
     brojOcena: 5,
     slika: "https://t3.ftcdn.net/jpg/05/72/79/28/360_F_572792806_R2ouiFMMsjH9QoqDtmTTE60qvBfFBNNF.jpg",
+
+    opisDetaljno: [
+      "Brza i precizna dijagnostika povreda i bolesti.",
+      "Minimalna doza zračenja i bezbedan postupak."
+    ],
+
+    ukljucuje: [
+      "Rendgensko snimanje",
+      "Tumačenje nalaza",
+      "Digitalna kopija"
+    ],
+
+    koraci: [
+      { naslov: "Priprema", opis: "Pozicioniranje ljubimca" },
+      { naslov: "Snimanje", opis: "Izrada rendgena" },
+      { naslov: "Analiza", opis: "Veterinar tumači snimak" }
+    ]
   },
+
   {
     id: 4,
     naziv: "Ultrazvuk",
-    opis: "Pregled unutrašnjih organa ultrazvučnom metodom, bezbolno i bezbedno.",
+    opis: "Pregled unutrašnjih organa ultrazvučnom metodom.",
     kategorija: "Dijagnostika",
     vrste: ["Pas", "Mačka"],
     cena: 4000,
     ocene: 5,
     brojOcena: 11,
     slika: "https://mitchamvet.com.au/wp-content/uploads/2021/10/MPH-Ultrasound-on-Cat.jpg",
+
+    opisDetaljno: [
+      "Bezbolna i sigurna dijagnostička metoda.",
+      "Detaljan pregled organa u realnom vremenu."
+    ],
+
+    ukljucuje: [
+      "Ultrazvučni pregled",
+      "Izveštaj veterinara",
+      "Preporuke"
+    ],
+
+    koraci: [
+      { naslov: "Priprema", opis: "Priprema regije pregleda" },
+      { naslov: "Pregled", opis: "Ultrazvučno snimanje" },
+      { naslov: "Izveštaj", opis: "Analiza nalaza" }
+    ]
   },
+
   {
     id: 5,
-    naziv: "Kastacija / Sterilizacija",
-    opis: "Hirurški zahvat koji sprečava razmnožavanje i poboljšava zdravlje.",
+    naziv: "Sterilizacija / Kastracija",
+    opis: "Hirurški zahvat za sprečavanje razmnožavanja.",
     kategorija: "Hirurgija",
     vrste: ["Pas", "Mačka"],
     cena: 8000,
     ocene: 5,
     brojOcena: 8,
     slika: "https://cobb.vet/wp-content/uploads/2025/03/dog-post-surgery-recovery.jpg",
+
+    opisDetaljno: [
+      "Rutinski hirurški zahvat u opštoj anesteziji.",
+      "Smanjuje rizik od bolesti i neželjenog razmnožavanja."
+    ],
+
+    ukljucuje: [
+      "Preoperativni pregled",
+      "Anestezija",
+      "Operacija",
+      "Postoperativna nega"
+    ],
+
+    koraci: [
+      { naslov: "Priprema", opis: "Analize i pregled" },
+      { naslov: "Operacija", opis: "Izvođenje zahvata" },
+      { naslov: "Oporavak", opis: "Praćenje nakon operacije" }
+    ]
   },
+
   {
     id: 6,
     naziv: "Kupanje i šišanje",
-    opis: "Profesionalna nega krzna i kože — kupanje, četkanje i šišanje.",
+    opis: "Profesionalna nega krzna i kože.",
     kategorija: "Nega i grooming",
     vrste: ["Pas", "Mačka"],
     cena: 2500,
     ocene: 4,
     brojOcena: 19,
-    slika: "https://img.freepik.com/premium-photo/dog-grooming-salon-dog-get-shower-domestic-animal-get-beauty-procedures-beauty-salon-dogs-bath_170532-4008.jpg?size=626&ext=jpg",
+    slika: "https://img.freepik.com/premium-photo/dog-grooming-salon-dog-get-shower-domestic-animal-get-beauty-procedures-beauty-salon-dogs-bath_170532-4008.jpg",
+
+    opisDetaljno: [
+      "Kupanje, šišanje i četkanje uz profesionalne preparate.",
+      "Prilagođeno tipu dlake."
+    ],
+
+    ukljucuje: [
+      "Kupanje",
+      "Šišanje",
+      "Četkanje",
+      "Sušenje"
+    ],
+
+    koraci: [
+      { naslov: "Kupanje", opis: "Pranje specijalnim šamponom" },
+      { naslov: "Šišanje", opis: "Oblikovanje dlake" },
+      { naslov: "Završna nega", opis: "Sušenje i stilizovanje" }
+    ]
   },
+
   {
     id: 7,
     naziv: "Pregled ptica",
-    opis: "Specijalistički pregled za ptice — papagaji, kanarinci i ostale vrste.",
+    opis: "Specijalistički pregled ptica.",
     kategorija: "Pregledi",
     vrste: ["Ptica"],
     cena: 1800,
     ocene: 4,
     brojOcena: 3,
     slika: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&q=80",
+
+    opisDetaljno: [
+      "Procena zdravlja perja, kljuna i disanja.",
+      "Specijalizovan pregled za ptice."
+    ],
+
+    ukljucuje: [
+      "Pregled perja",
+      "Pregled kljuna",
+      "Saveti o ishrani"
+    ],
+
+    koraci: [
+      { naslov: "Procena", opis: "Pregled ptice" },
+      { naslov: "Analiza", opis: "Procena zdravlja" },
+      { naslov: "Saveti", opis: "Preporuke vlasniku" }
+    ]
   },
+
   {
     id: 8,
-    naziv: "Pregled egzotičnih životinja",
-    opis: "Stručna briga za egzotične ljubimce — kornjače, zečevi, zamorčići i ostalo.",
+    naziv: "Egzotične životinje",
+    opis: "Pregled egzotičnih ljubimaca.",
     kategorija: "Pregledi",
     vrste: ["Egzotične životinje"],
     cena: 2200,
     ocene: 4,
     brojOcena: 4,
     slika: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600&q=80",
+
+    opisDetaljno: [
+      "Specijalizovan pregled egzotičnih vrsta.",
+      "Procena specifičnih potreba."
+    ],
+
+    ukljucuje: [
+      "Pregled kondicije",
+      "Procena ishrane",
+      "Saveti za negu"
+    ],
+
+    koraci: [
+      { naslov: "Pregled", opis: "Procena stanja" },
+      { naslov: "Analiza", opis: "Dijagnostika" },
+      { naslov: "Saveti", opis: "Preporuke" }
+    ]
   },
+
   {
     id: 9,
     naziv: "Analiza krvi",
-    opis: "Kompletna krvna slika i biohemija za praćenje zdravstvenog stanja.",
+    opis: "Laboratorijska dijagnostika krvi.",
     kategorija: "Dijagnostika",
     vrste: ["Pas", "Mačka"],
     cena: 2800,
     ocene: 5,
     brojOcena: 22,
     slika: "https://felinefascination.com/wp-content/uploads/2025/08/cat_blood_test_analysis_7t7ll.jpg",
+
+    opisDetaljno: [
+      "Kompletna krvna slika i biohemija.",
+      "Procena unutrašnjeg zdravlja."
+    ],
+
+    ukljucuje: [
+      "Uzimanje uzorka",
+      "Analiza krvi",
+      "Izveštaj"
+    ],
+
+    koraci: [
+      { naslov: "Uzorak", opis: "Vađenje krvi" },
+      { naslov: "Analiza", opis: "Laboratorija" },
+      { naslov: "Rezultat", opis: "Dijagnoza" }
+    ]
   },
+
   {
     id: 10,
     naziv: "Čišćenje zuba",
-    opis: "Uklanjanje kamenca i plaka uz poliranje zuba pod anestezijom.",
+    opis: "Uklanjanje kamenca i plaka.",
     kategorija: "Hirurgija",
     vrste: ["Pas", "Mačka"],
     cena: 5500,
     ocene: 4,
     brojOcena: 7,
-    slika: "https://tse3.mm.bing.net/th/id/OIP.vZAcr_ARrhzACIp6isylJQHaEO?pid=Api",
+    slika: "https://tse3.mm.bing.net/th/id/OIP.vZAcr_ARrhzACIp6isylJQHaEO",
+
+    opisDetaljno: [
+      "Profesionalno čišćenje zuba pod anestezijom.",
+      "Prevencija bolesti zuba."
+    ],
+
+    ukljucuje: [
+      "Uklanjanje kamenca",
+      "Poliranje",
+      "Kontrola"
+    ],
+
+    koraci: [
+      { naslov: "Priprema", opis: "Anestezija" },
+      { naslov: "Čišćenje", opis: "Uklanjanje kamenca" },
+      { naslov: "Oporavak", opis: "Buđenje" }
+    ]
   },
+
   {
     id: 11,
     naziv: "Vakcinacija ptica",
-    opis: "Program vakcinacije za ptice prilagođen vrsti i uzrastu.",
+    opis: "Vakcinacija ptica.",
     kategorija: "Vakcinacija",
     vrste: ["Ptica"],
     cena: 1600,
     ocene: 4,
     brojOcena: 2,
-    slika:"https:/media.istockphoto.com/id/1466368811/photo/vaccine.jpg?s=612x612&w=0&k=20&c=WpKYCcx7RWtyDd-tn9-0j5CkaKvgq2HJ-rRRsIBc-xs="
+    slika: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
+
+    opisDetaljno: [
+      "Zaštita ptica od bolesti.",
+      "Program vakcinacije po vrsti."
+    ],
+
+    ukljucuje: [
+      "Vakcinacija",
+      "Pregled",
+      "Praćenje"
+    ],
+
+    koraci: [
+      { naslov: "Pregled", opis: "Procena ptice" },
+      { naslov: "Vakcinacija", opis: "Davanje vakcine" },
+      { naslov: "Praćenje", opis: "Posle vakcine" }
+    ]
   },
+
   {
     id: 12,
     naziv: "Čipovanje",
-    opis: "Ugradnja mikročipa i registracija u nacionalnu bazu podataka.",
+    opis: "Ugradnja mikročipa.",
     kategorija: "Pregledi",
     vrste: ["Pas", "Mačka"],
     cena: 1200,
     ocene: 5,
     brojOcena: 31,
     slika: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
-  },
+
+    opisDetaljno: [
+      "Identifikacija ljubimca mikročipom.",
+      "Registracija u bazu podataka."
+    ],
+
+    ukljucuje: [
+      "Ugradnja čipa",
+      "Registracija",
+      "Provera"
+    ],
+
+    koraci: [
+      { naslov: "Ugradnja", opis: "Postavljanje čipa" },
+      { naslov: "Registracija", opis: "Upis u sistem" },
+      { naslov: "Završetak", opis: "Provera ispravnosti" }
+    ]
+  }
 ];
 
 const KATEGORIJE = [
@@ -357,7 +579,9 @@ export default function Usluge() {
 
           <div className="usluge-grid">
             {paged.map((u) => (
-              <div key={u.id} className="service-card">
+               <Link to={`/usluga/${u.id}`} key={u.id} className="service-card-link">
+
+              <div className="service-card">
                 {u.slika ? (
                   <img className="card-img" src={u.slika} alt={u.naziv} />
                 ) : (
@@ -379,6 +603,7 @@ export default function Usluge() {
                   </div>
                 </div>
               </div>
+              </Link>
             ))}
           </div>
 
