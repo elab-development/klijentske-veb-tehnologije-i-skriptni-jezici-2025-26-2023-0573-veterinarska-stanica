@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Usluge.css";
 import { Link } from 'react-router-dom';
 
@@ -407,29 +407,21 @@ export default function Usluge() {
   const [sort, setSort] = useState("popularnost");
   const [page, setPage] = useState(1);
 
+  useEffect(() => {
+  setPage(1);
+}, [search, kategorija, vrsteFilter, minCena, maxCena]);
   
-  const [appliedFilters, setAppliedFilters] = useState({
-    search: "",
-    kategorija: "",
-    vrste: [] as string[],
-    min: 0,
-    max: 20000,
-  });
 
-  const applyFilters = () => {
-    setAppliedFilters({ search, kategorija, vrste: vrsteFilter, min: minCena, max: maxCena });
-    setPage(1);
-  };
+  
 
-  const resetFilters = () => {
-    setSearch("");
-    setKategorija("");
-    setVrsteFilter([]);
-    setMinCena(0);
-    setMaxCena(20000);
-    setAppliedFilters({ search: "", kategorija: "", vrste: [], min: 0, max: 20000 });
-    setPage(1);
-  };
+ const resetFilters = () => {
+  setSearch("");
+  setKategorija("");
+  setVrsteFilter([]);
+  setMinCena(0);
+  setMaxCena(20000);
+  setPage(1);
+};
 
   const toggleVrsta = (v: string) =>
     setVrsteFilter((prev) =>
@@ -438,12 +430,38 @@ export default function Usluge() {
 
   
   let filtered = SVE_USLUGE.filter((u) => {
-    if (appliedFilters.search && !u.naziv.toLowerCase().includes(appliedFilters.search.toLowerCase())) return false;
-    if (appliedFilters.kategorija && u.kategorija !== appliedFilters.kategorija) return false;
-    if (appliedFilters.vrste.length && !appliedFilters.vrste.some((v) => u.vrste.includes(v as any))) return false;
-    if (u.cena < appliedFilters.min || u.cena > appliedFilters.max) return false;
-    return true;
-  });
+  if (
+    search &&
+    !u.naziv.toLowerCase().includes(search.toLowerCase())
+  ) {
+    return false;
+  }
+
+  if (
+    kategorija &&
+    u.kategorija !== kategorija
+  ) {
+    return false;
+  }
+
+  if (
+    vrsteFilter.length &&
+    !vrsteFilter.some((v) =>
+      u.vrste.includes(v as any)
+    )
+  ) {
+    return false;
+  }
+
+  if (
+    u.cena < minCena ||
+    u.cena > maxCena
+  ) {
+    return false;
+  }
+
+  return true;
+});
 
 
   filtered = [...filtered].sort((a, b) => {
@@ -551,9 +569,7 @@ export default function Usluge() {
             />
           </div>
 
-          <button className="btn-filter" onClick={applyFilters}>
-            Primeni filtere
-          </button>
+          
           <button className="btn-reset" onClick={resetFilters}>
             Resetuj filtere
           </button>
