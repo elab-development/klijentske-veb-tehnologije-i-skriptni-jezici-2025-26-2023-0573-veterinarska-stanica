@@ -1,0 +1,117 @@
+.page-wrapper {
+  min-height: 100vh;
+  background: #e8d5f0;
+  padding: 70px 16px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1a1a2e;
+  letter-spacing: 1px;
+}
+
+.green-card {
+  background: #c8ddb0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-left: 6px solid #7b3fa0;
+  color: #2a2a2a;
+  font-size: 15px;
+  line-height: 1.7;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.green-card h2 {
+  margin-bottom: 10px;
+  color: #1a1a2e;
+  font-size: 22px;
+  line-height: 1.7;
+}
+
+.green-card p {
+  color: #2a2a2a;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.green-card ul {
+  padding-left: 18px;
+}
+
+.green-card li {
+  margin-bottom: 6px;
+  color: #2a2a2a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.green-card div {
+  color: #2a2a2a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.highlight-box {
+  margin-top: 12px;
+  padding: 10px;
+  background: #f3eeff;
+  border-left: 4px solid #7c4dbe;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.link {
+  color: #7c4dbe;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #6a3ea8;
+}
+
+.team-text {
+  color: #2a2a2a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 50px 12px 30px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .green-card {
+    padding: 16px;
+    border-left: 4px solid #7b3fa0;
+  }
+
+  .green-card h2 {
+    font-size: 16px;
+  }
+
+  .green-card p,
+  .green-card li {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
