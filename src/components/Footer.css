@@ -13,9 +13,10 @@
   gap: 16px;
 }
 .footer-linkovi a {
-  color: #555;
+  color: #fff;
   text-decoration: none;
 }
 .footer-linkovi a:hover {
+  color: #fff;
   text-decoration: underline;
 }

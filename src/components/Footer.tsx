@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="footer">
       <span>© 2026 Veterinarska Ambulanta</span>
       <div className="footer-links">
-        <Link to="/">O nama</Link>
-        <Link to="/kontakt">Kontakt</Link>
-        <a href="#">Politika privatnosti</a>
+         <Link to="/o-nama">O nama</Link>
+         <Link to="/kontakt">Kontakt</Link>
+         <Link to="/politika-privatnosti">Politika privatnosti</Link>
       </div>
     </footer>
   );
