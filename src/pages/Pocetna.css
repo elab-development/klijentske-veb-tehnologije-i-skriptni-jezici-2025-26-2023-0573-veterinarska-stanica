@@ -167,7 +167,7 @@ ul { list-style: none; }
 
 .section {
   padding: 2rem 2rem;
-  max-width: 1200px;
+  max-width: 980px;
   margin: 0 auto;
   width: 100%;
 }
@@ -185,8 +185,8 @@ ul { list-style: none; }
 
 .usluge-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 1rem !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
 .usluga-card {
@@ -384,7 +384,7 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  .usluge-grid { grid-template-columns: 1fr !important; }
+  .usluge-grid { grid-template-columns: 1fr; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; }
   .navbar { padding: 0 1rem; }
