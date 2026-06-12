@@ -164,6 +164,23 @@ ul { list-style: none; }
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.field select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-input);
+  background: var(--white);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(123, 63, 160, 0.18);
+}
+
 .field input:focus {
   border-color: var(--purple);
   box-shadow: 0 0 0 3px rgba(123, 63, 160, 0.18);
