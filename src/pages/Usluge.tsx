@@ -593,36 +593,48 @@ export default function Usluge() {
             </select>
           </div>
 
-          <div className="usluge-grid">
-            {paged.map((u) => (
-               <Link to={`/usluga/${u.id}`} key={u.id} className="service-card-link">
+         <div className="usluge-grid">
+  {filtered.length === 0 ? (
+    <div className="no-results">
+      Usluga nije pronađena
+    </div>
+  ) : (
+    paged.map((u) => (
+      <Link to={`/usluga/${u.id}`} key={u.id} className="service-card-link">
 
-              <div className="service-card">
-                {u.slika ? (
-                  <img className="card-img" src={u.slika} alt={u.naziv} />
-                ) : (
-                  <div className="card-img-placeholder">{u.naziv}</div>
-                )}
-                <div className="card-body">
-                  <div className="card-tags">
-                    <span className="tag">{u.kategorija}</span>
-                    {u.vrste.slice(0, 2).map((v) => (
-                      <span key={v} className="tag">{v}</span>
-                    ))}
-                  </div>
-                  <div className="card-title">{u.naziv}</div>
-                  <div className="card-desc">{u.opis}</div>
-                  <Stars n={u.ocene} total={u.brojOcena} />
-                  <div className="card-footer">
-                    <span className="card-price">od {u.cena.toLocaleString("sr-RS")} din</span>
-                    <button className="btn-info">Više info</button>
-                  </div>
-                </div>
-              </div>
-              </Link>
-            ))}
+        <div className="service-card">
+          {u.slika ? (
+            <img className="card-img" src={u.slika} alt={u.naziv} />
+          ) : (
+            <div className="card-img-placeholder">{u.naziv}</div>
+          )}
+
+          <div className="card-body">
+            <div className="card-tags">
+              <span className="tag">{u.kategorija}</span>
+              {u.vrste.slice(0, 2).map((v) => (
+                <span key={v} className="tag">{v}</span>
+              ))}
+            </div>
+
+            <div className="card-title">{u.naziv}</div>
+            <div className="card-desc">{u.opis}</div>
+
+            <Stars n={u.ocene} total={u.brojOcena} />
+
+            <div className="card-footer">
+              <span className="card-price">
+                od {u.cena.toLocaleString("sr-RS")} din
+              </span>
+              <button className="btn-info">Više info</button>
+            </div>
           </div>
 
+        </div>
+      </Link>
+    ))
+  )}
+</div>
           
           {totalPages > 1 && (
             <div className="pagination">

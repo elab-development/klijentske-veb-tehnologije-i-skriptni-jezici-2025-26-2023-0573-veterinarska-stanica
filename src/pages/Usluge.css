@@ -443,6 +443,18 @@ body {
  display: block;
 }
 
+.no-results {
+  grid-column: 1 / -1; 
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 16px;
+  color: #2a3a2a;
+  background: #e8d5f0;
+  border-radius: 10px;
+  border: 1px solid #7c4dbe;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .footer {
   background: #7b3fa0;
   border-top: 1px solid #e5e5e5;
