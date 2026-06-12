@@ -168,8 +168,8 @@ export default function PojedinacnaUsluga() {
           </div>
 
           <div className="pu-hero-actions">
-            <button className="btn-zakazi" onClick={() => navigate("/zakazivanje")}> Zakaži </button>
-            <button className="btn-pozovi">Pozovi</button>
+            <button className="btn-zakazi" onClick={() => navigate("/zakazivanje")}> Zakaži termin</button>
+            <button className="btn-pozovi">Pozovi nas</button>
           </div>
         </div>
       </div>

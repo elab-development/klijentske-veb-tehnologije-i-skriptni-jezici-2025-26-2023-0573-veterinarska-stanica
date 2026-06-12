@@ -111,7 +111,7 @@ export const SVE_USLUGE = [
   {
     id: 4,
     naziv: "Ultrazvuk",
-    opis: "Pregled unutrašnjih organa ultrazvučnom metodom.",
+    opis: "Pregled unutrašnjih organa ultrazvučnom metodom, bezbolno i bezbedno.",
     kategorija: "Dijagnostika",
     vrste: ["Pas", "Mačka"],
     cena: 4000,
@@ -140,7 +140,7 @@ export const SVE_USLUGE = [
   {
     id: 5,
     naziv: "Sterilizacija / Kastracija",
-    opis: "Hirurški zahvat za sprečavanje razmnožavanja.",
+    opis: "Hirurški zahvat koji sprečava razmnožavanje i poboljšava zdravlje.",
     kategorija: "Hirurgija",
     vrste: ["Pas", "Mačka"],
     cena: 8000,
@@ -170,7 +170,7 @@ export const SVE_USLUGE = [
   {
     id: 6,
     naziv: "Kupanje i šišanje",
-    opis: "Profesionalna nega krzna i kože.",
+    opis: "Profesionalna nega krzna i kože — kupanje, četkanje i šišanje.",
     kategorija: "Nega i grooming",
     vrste: ["Pas", "Mačka"],
     cena: 2500,
@@ -200,7 +200,7 @@ export const SVE_USLUGE = [
   {
     id: 7,
     naziv: "Pregled ptica",
-    opis: "Specijalistički pregled ptica.",
+    opis: "Specijalistički pregled ptica — papagaji, kanarinci i ostale vrste.",
     kategorija: "Pregledi",
     vrste: ["Ptica"],
     cena: 1800,
@@ -228,8 +228,8 @@ export const SVE_USLUGE = [
 
   {
     id: 8,
-    naziv: "Egzotične životinje",
-    opis: "Pregled egzotičnih ljubimaca.",
+    naziv: "Pregled egzotičnih životinja",
+    opis: "Stručna briga za egzotične ljubimce — kornjače, zečevi, zamorčići i ostalo.",
     kategorija: "Pregledi",
     vrste: ["Egzotične životinje"],
     cena: 2200,
@@ -258,7 +258,7 @@ export const SVE_USLUGE = [
   {
     id: 9,
     naziv: "Analiza krvi",
-    opis: "Laboratorijska dijagnostika krvi.",
+    opis: "Kompletna krvna slika i biohemija za praćenje zdravstvenog stanja.",
     kategorija: "Dijagnostika",
     vrste: ["Pas", "Mačka"],
     cena: 2800,
@@ -287,7 +287,7 @@ export const SVE_USLUGE = [
   {
     id: 10,
     naziv: "Čišćenje zuba",
-    opis: "Uklanjanje kamenca i plaka.",
+    opis: "Uklanjanje kamenca i plaka uz poliranje zuba pod anestezijom.",
     kategorija: "Hirurgija",
     vrste: ["Pas", "Mačka"],
     cena: 5500,
@@ -316,7 +316,7 @@ export const SVE_USLUGE = [
   {
     id: 11,
     naziv: "Vakcinacija ptica",
-    opis: "Vakcinacija ptica.",
+    opis: "Program vakcinacije za ptice prilagođen vrsti i uzrastu.",
     kategorija: "Vakcinacija",
     vrste: ["Ptica"],
     cena: 1600,
@@ -345,7 +345,7 @@ export const SVE_USLUGE = [
   {
     id: 12,
     naziv: "Čipovanje",
-    opis: "Ugradnja mikročipa.",
+    opis: "Ugradnja mikročipa i registracija u nacionalnu bazu podataka.",
     kategorija: "Pregledi",
     vrste: ["Pas", "Mačka"],
     cena: 1200,
