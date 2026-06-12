@@ -13,6 +13,8 @@ import Pocetna from "./pages/Pocetna";
 import Usluge from "./pages/Usluge";
 import PojedinacnaUsluga from "./pages/PojedinacnaUsluga";
 import Kontakt from "./pages/Kontakt";
+import ONama from "./pages/ONama";
+import PolitikaPrivatnosti from "./pages/PolitikaPrivatnosti";
 
 import "./App.css";
 
@@ -41,6 +43,8 @@ function App() {
               <Route path="/usluge" element={<Usluge />} />
               <Route path="/usluga/:id" element={<PojedinacnaUsluga />} />
               <Route path="/kontakt" element={<Kontakt />} />
+              <Route path="/o-nama" element={<ONama />} />
+              <Route path="/politika-privatnosti" element={<PolitikaPrivatnosti />} />
 
               <Route
                 path="/zakazivanje"

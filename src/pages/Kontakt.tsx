@@ -69,7 +69,7 @@ export default function Kontakt() {
 
      
       <header className="kontakt-header">
-        <h1>Kontaktirajte nas</h1>
+        <h1>KONTAKTIRAJTE NAS</h1>
         <p>
           Ispod možete pronaći sve kontakt informacije naše ambulante. Pozovite nas
           ili popunite obrazac i naš tim će Vam pomoći da pronađete pravi termin za
@@ -126,7 +126,7 @@ export default function Kontakt() {
                     </a>
                   </span>
                   <br />
-                  <span style={{ fontSize: 12, color: "#999" }}>
+                  <span style={{ fontSize: 12, color: "#111" }}>
                     Dostupno 24h / 7 dana u nedelji
                   </span>
                 </div>

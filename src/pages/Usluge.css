@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #c8ddb0;
   color: #222;
   min-height: 100vh;
@@ -83,9 +83,10 @@ body {
 
 .page-header h1 {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 10px;
-  letter-spacing: -0.3px;
+  letter-spacing: 1px;
+  color: #1a1a2e;
 }
 
 .page-header p {
