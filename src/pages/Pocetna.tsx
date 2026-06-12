@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Pocetna.css";
 
 const usluge = [
@@ -42,8 +42,38 @@ const vrsjeUsluga = [
 export default function Pocetna() {
   const [forma, setForma] = useState({ ime: "", usluga: "", datum: "" });
 
+  const [catImage, setCatImage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const updateForma = (field: string, value: string) =>
     setForma((prev) => ({ ...prev, [field]: value }));
+
+  const loadCat = async () => {
+  try {
+    setLoading(true);
+    setError("");
+
+    const response = await fetch(
+      "https://api.thecatapi.com/v1/images/search"
+    );
+
+    if (!response.ok) {
+      throw new Error("Greška pri učitavanju.");
+    }
+
+    const data = await response.json();
+
+    setCatImage(data[0].url);
+  } catch {
+    setError("Nije moguće učitati pacijenta dana.");
+  } finally {
+    setLoading(false);
+  }
+};
+useEffect(() => {
+  loadCat();
+}, []);
 
   const handleZakazivanje = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -113,6 +143,42 @@ export default function Pocetna() {
         
       </section>
 
+          <section className="section">
+  <h2 className="section-heading">
+    -- UPOZNAJ PACIJENTA DANA --
+  </h2>
+
+  <div className="patient-card">
+
+    {loading && <p>Učitavanje pacijenta...</p>}
+
+    {error && <p className="error-text">{error}</p>}
+
+    {!loading && !error && catImage && (
+      <>
+        <img
+          src={catImage}
+          alt="Pacijent dana"
+          className="patient-img"
+        />
+
+        <h3>Pacijent dana </h3>
+
+        <p>
+          Ovaj mali pacijent danas je u centru pažnje naše ambulante :)
+        </p>
+      </>
+    )}
+
+    <button
+      className="btn-zakazi"
+      onClick={loadCat}
+    >
+      Novi pacijent
+    </button>
+
+  </div>
+</section>
       
       <section className="section two-col">
         

@@ -167,7 +167,7 @@ ul { list-style: none; }
 
 .section {
   padding: 2rem 2rem;
-  max-width: 980px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
@@ -185,8 +185,8 @@ ul { list-style: none; }
 
 .usluge-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
 }
 
 .usluga-card {
@@ -350,9 +350,41 @@ ul { list-style: none; }
 .footer-links a { color: var(--text-muted); transition: color 0.2s; }
 .footer-links a:hover { color: var(--purple); }
 
+.patient-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 3px 12px rgba(100,40,140,0.1);
+}
+
+.patient-img {
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.patient-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.patient-card p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.error-text {
+  color: crimson;
+  font-weight: 600;
+}
 
 @media (max-width: 768px) {
-  .usluge-grid { grid-template-columns: 1fr; }
+  .usluge-grid { grid-template-columns: 1fr !important; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; }
   .navbar { padding: 0 1rem; }
