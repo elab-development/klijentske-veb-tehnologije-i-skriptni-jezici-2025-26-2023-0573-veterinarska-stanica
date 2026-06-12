@@ -322,7 +322,7 @@ export const SVE_USLUGE = [
     cena: 1600,
     ocene: 4,
     brojOcena: 2,
-    slika: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
+    slika: "https://media.istockphoto.com/id/1466368811/photo/vaccine.jpg?s=612x612&w=0&k=20&c=WpKYCcx7RWtyDd-tn9-0j5CkaKvgq2HJ-rRRsIBc-xs=",
 
     opisDetaljno: [
       "Zaštita ptica od bolesti.",
