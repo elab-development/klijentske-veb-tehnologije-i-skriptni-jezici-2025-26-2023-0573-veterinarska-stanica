@@ -100,7 +100,7 @@ export default function Kontakt() {
               <div>
                 <div className="kontakt-info-label">Telefon</div>
                 <div className="kontakt-info-value">
-                  <a href="tel:+381112345678">+381 11 234-5678</a>
+                  <a href="tel:+381112345678">+381 11 234 5678</a>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Kontakt() {
                 <div className="kontakt-info-value">
                   <span className="emergency">
                     <a href="tel:+381641234567" style={{ color: "inherit" }}>
-                      +381 64 123-4567
+                      +381 64 123 4567
                     </a>
                   </span>
                   <br />

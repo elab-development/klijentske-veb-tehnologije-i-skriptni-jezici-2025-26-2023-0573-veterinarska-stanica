@@ -6,15 +6,21 @@
 .zakazivanje-header {
   background: #eaddff;
   padding: 12px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: left;
 }
 .zakazivanje-header h1 {
-  font-size: 1.3rem;
+  font-size: 36px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: 800;
   margin-bottom: 4px;
   color: #333;
 }
 .zakazivanje-header p {
   color: #888888;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   font-size: 13px;
 }
 
@@ -33,9 +39,13 @@
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .forma-sekcija h3 {
   font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   text-align: left;
   color: #333;
   margin-bottom: 14px;
@@ -49,11 +59,15 @@
   padding: 16px;
   color: black;
   text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .pregled-panel h3 {
   font-size: 13px;
   color: #333;
   margin-bottom: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .usluga-opcija {

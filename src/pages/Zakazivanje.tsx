@@ -133,7 +133,7 @@ export default function Zakazivanje() {
       <div className="zakazivanje-layout">
         <div className="zakazivanje-forma">
           <div className="forma-sekcija">
-            <h3>-- KORAK 1: IZBOR USLUGE --</h3>
+            <h3>-- KORAK 1A: IZBOR USLUGE --</h3>
 
             {USLUGE_LISTA.map((u) => (
               <label
@@ -337,9 +337,9 @@ export default function Zakazivanje() {
           <div className="kontakt-box">
             <strong>Pitanja?</strong>
 
-            <p>📞 +381 13 123 456</p>
+            <p>📞 +381 11 234 5678</p>
 
-            <p>✉ info@vetsts.rs</p>
+            <p>✉ info@stsvet.rs</p>
           </div>
         </div>
       </div>
