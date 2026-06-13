@@ -20,6 +20,8 @@ body {
   padding: 0 32px;
   height: 56px;
   border-bottom: 1px solid #e5e5e5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .navbar-logo {
@@ -67,6 +69,8 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-prijava:hover {
@@ -93,6 +97,8 @@ body {
   font-size: 16px;
   opacity: 0.88;
   color: #666;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .usluge-layout {
@@ -102,6 +108,8 @@ body {
   margin: 32px auto 48px;
   padding: 0 16px;
   align-items: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 
@@ -123,6 +131,8 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-bottom: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .sidebar-search input {
@@ -134,6 +144,8 @@ body {
   outline: none;
   color: #555;
   background: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .sidebar-search input:focus {
@@ -145,6 +157,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .sidebar-list li button {
@@ -158,6 +172,8 @@ body {
   cursor: pointer;
   color: #333;
   transition: background 0.15s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .sidebar-list li button:hover {
@@ -227,6 +243,8 @@ body {
   cursor: pointer;
   margin-top: 8px;
   transition: background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-filter:hover {
@@ -242,6 +260,8 @@ body {
   margin-top: 6px;
   padding: 0;
   text-decoration: underline;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 
@@ -255,6 +275,8 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .usluge-topbar .count {
@@ -275,6 +297,8 @@ body {
   cursor: pointer;
   color: #333;
   outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 
@@ -423,6 +447,8 @@ body {
   cursor: pointer;
   color: #333;
   transition: background 0.15s, border-color 0.15s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .pagination button:hover {
@@ -453,6 +479,7 @@ body {
   border-radius: 10px;
   border: 1px solid #7c4dbe;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .footer {
@@ -465,6 +492,8 @@ body {
   font-size: 13px;
   color: #fff;
   margin-top: 48px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .footer-links {

@@ -7,7 +7,8 @@
 .pu-page {
   background: #e8d5f0;
   min-height: 100vh;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   color: #222;
   padding: 24px 16px 48px;
 }
@@ -71,6 +72,8 @@
   font-weight: 700;
   color: #1a1a2e;
   margin-bottom: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .pu-stars {
@@ -99,6 +102,8 @@
   width: 100%;        
   max-width: 980px;  
   text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .pu-price-label {
@@ -148,6 +153,8 @@
   letter-spacing: 0.3px;
   transition: background 0.2s;
   text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-zakazi:hover { background: #6a3ea8; }
@@ -163,13 +170,15 @@
   cursor: pointer;
   transition: border-color 0.2s;
   text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-pozovi:hover { border-color: #7c4dbe; color: #7c4dbe; }
 
 
 .pu-section {
-  background: #c8dfc8;
+  background: #c8ddb0;
   border-radius: 10px;
   padding: 20px 24px;
   max-width: 960px;
@@ -277,7 +286,7 @@
 
 
 .pu-reviews-section {
-  background: #c8dfc8;
+  background: #c8ddb0;
   border-radius: 10px;
   padding: 20px 24px;
   max-width: 960px;
@@ -309,6 +318,9 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  
 }
 
 .btn-dodaj-recenziju:hover { background: #6a3ea8; }

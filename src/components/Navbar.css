@@ -81,6 +81,8 @@
   border: none;
   cursor: pointer;
   font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .dropdown a:hover,
 .dropdown button:hover {

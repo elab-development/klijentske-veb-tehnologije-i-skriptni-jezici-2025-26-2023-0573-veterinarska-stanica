@@ -8,6 +8,7 @@
   background: #e8d5f0;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   color: #1a1a2e;
 }
 
@@ -233,6 +234,8 @@
   background: #fafafa;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .form-group input:focus,
@@ -266,6 +269,8 @@
   cursor: pointer;
   letter-spacing: 0.3px;
   transition: background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-posalji:hover { background: #6a3ea8; }

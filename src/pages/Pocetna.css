@@ -109,6 +109,8 @@ ul { list-style: none; }
 .hero-content p {
   font-size: 0.95rem;
   opacity: 0.9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .hero-btns {
@@ -126,6 +128,8 @@ ul { list-style: none; }
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   transition: background 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .btn-primary:hover { background: var(--purple); }
 
@@ -139,6 +143,8 @@ ul { list-style: none; }
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   transition: background 0.2s, color 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .btn-outline:hover { background: var(--white); color: var(--purple); }
 
@@ -161,8 +167,10 @@ ul { list-style: none; }
 .feature-item:last-child { border-right: none; }
 
 .feature-icon { font-size: 1.8rem; margin-bottom: 4px; }
-.feature-item strong { font-size: 0.9rem; color: var(--text-dark); }
-.feature-item span  { font-size: 0.78rem; color: var(--text-muted); }
+.feature-item strong { font-size: 0.9rem; color: var(--text-dark); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;}
+.feature-item span  { font-size: 0.78rem; color: var(--text-muted); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;}
 
 
 .section {
@@ -180,6 +188,8 @@ ul { list-style: none; }
   margin-bottom: 1.2rem;
   border-bottom: 2px solid rgba(123,63,160,0.2);
   padding-bottom: 0.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 
@@ -213,6 +223,8 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   gap: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .usluga-body h3 { font-size: 0.95rem; font-weight: 700; }
@@ -277,7 +289,9 @@ ul { list-style: none; }
 }
 
 .field { display: flex; flex-direction: column; gap: 5px; }
-.field label { font-size: 0.85rem; font-weight: 500; }
+.field label { font-size: 0.85rem; font-weight: 500;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px; }
 
 .field input,
 .field select {
@@ -290,10 +304,13 @@ ul { list-style: none; }
   color: var(--text-dark);
   outline: none;
   transition: border-color 0.2s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .field input:focus,
 .field select:focus { border-color: var(--purple); }
-.field input::placeholder { color: #aaa; }
+.field input::placeholder { color: #aaa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px; }
 
 .btn-zakazi {
   width: 100%;
@@ -308,6 +325,8 @@ ul { list-style: none; }
   cursor: pointer;
   margin-top: 0.3rem;
   transition: background 0.2s, transform 0.1s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .btn-zakazi:hover { background: var(--purple); }
 .btn-zakazi:active { transform: scale(0.98); }
@@ -320,6 +339,8 @@ ul { list-style: none; }
   border-radius: 10px;
   padding: 0.9rem 1.1rem;
   box-shadow: 0 2px 8px rgba(100,40,140,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .review-header {
@@ -327,6 +348,8 @@ ul { list-style: none; }
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .review-header strong { font-size: 0.9rem; }
@@ -358,6 +381,8 @@ ul { list-style: none; }
   max-width: 500px;
   margin: 0 auto;
   box-shadow: 0 3px 12px rgba(100,40,140,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .patient-img {
@@ -376,11 +401,15 @@ ul { list-style: none; }
 .patient-card p {
   margin-bottom: 1rem;
   color: var(--text-muted);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .error-text {
   color: crimson;
   font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
