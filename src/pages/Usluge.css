@@ -223,6 +223,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .range-slider {
@@ -423,6 +425,8 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn-info:hover {
