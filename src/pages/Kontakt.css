@@ -220,6 +220,8 @@
   color: #555;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .form-group input,
