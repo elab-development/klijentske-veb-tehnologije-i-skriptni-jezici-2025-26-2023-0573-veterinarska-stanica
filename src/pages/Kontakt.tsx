@@ -69,7 +69,7 @@ export default function Kontakt() {
 
      
       <header className="kontakt-header">
-        <h1>KONTAKTIRAJTE NAS</h1>
+        <h1>Kontaktirajte nas</h1>
         <p>
           Ispod možete pronaći sve kontakt informacije naše ambulante. Pozovite nas
           ili popunite obrazac i naš tim će Vam pomoći da pronađete pravi termin za

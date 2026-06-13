@@ -31,6 +31,8 @@
   line-height: 1.7;
   width: 100%;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .green-card h2 {
@@ -38,6 +40,8 @@
   color: #1a1a2e;
   font-size: 22px;
   line-height: 1.7;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .green-card p {
@@ -46,6 +50,8 @@
   margin-bottom: 10px;
   font-size: 15px;
   line-height: 1.7;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .green-card ul {
@@ -72,6 +78,8 @@
   border-left: 4px solid #7c4dbe;
   border-radius: 8px;
   font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 .link {
