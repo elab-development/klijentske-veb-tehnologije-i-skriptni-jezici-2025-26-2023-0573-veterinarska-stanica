@@ -20,3 +20,15 @@
   color: #fff;
   text-decoration: underline;
 }
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-linkovi {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

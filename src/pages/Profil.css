@@ -256,3 +256,34 @@
   font-size: 13px;
   text-decoration: underline;
 }
+@media (max-width: 768px) {
+  .profil-stranica {
+    flex-direction: column;
+  }
+
+  .profil-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profil-sadrzaj {
+    width: 100%;
+  }
+
+  .dva-polja {
+    flex-direction: column;
+  }
+
+  .ljubimci-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .termini-tabela {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

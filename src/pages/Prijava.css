@@ -23,10 +23,12 @@
   margin: 0;
   padding: 0;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 ul {
   list-style: none;
 }
@@ -265,14 +267,18 @@ ul {
   border-top: 1px solid rgba(123, 63, 160, 0.12);
 }
 
-.footer-links {
+.footer-linkovi {
   display: flex;
   gap: 1.4rem;
 }
 
-.footer-links a {
+.footer-linkovi a {
   color: var(--text-muted);
   transition: color 0.2s;
+}
+
+.footer-linkovi a:hover {
+  color: var(--purple);
 }
 
 .login-greska {
@@ -282,23 +288,44 @@ ul {
   text-align: center;
 }
 
-.footer-links a:hover {
-  color: var(--purple);
-}
-
+/* RESPONSIVE */
 @media (max-width: 640px) {
   .navbar {
     padding: 0 1rem;
   }
+
   .nav-links {
     gap: 1rem;
+    flex-wrap: wrap;
   }
+
   .card-body {
     padding: 1.5rem 1.25rem 2rem;
   }
+
   .footer {
     flex-direction: column;
     gap: 8px;
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .card-image {
+    width: 100%;
+  }
+
+  .card-body {
+    width: 100%;
+    padding: 1.2rem;
+  }
+
+  .field input {
+    width: 100%;
   }
 }
