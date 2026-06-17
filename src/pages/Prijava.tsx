@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
+import Polje from "../components/Polje";
+import Dugme from "../components/Dugme";
 import "./Prijava.css";
 
 export default function Prijava() {
@@ -50,35 +52,23 @@ export default function Prijava() {
           <div className="card-body">
             <h1 className="card-title">PRIJAVA KORISNIKA</h1>
 
-            <div className="field">
-              <label htmlFor="email">
-                Email adresa: <span className="required">*</span>
-              </label>
+            <Polje
+              label="Email adresa"
+              value={email}
+              onChange={setEmail}
+              type="email"
+              placeholder="korisnik@email.com"
+              required
+            />
 
-              <input
-                id="email"
-                type="email"
-                placeholder="korisnik@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-              />
-            </div>
-
-            <div className="field">
-              <label htmlFor="password">
-                Lozinka: <span className="required">*</span>
-              </label>
-
-              <input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={lozinka}
-                onChange={(e) => setLozinka(e.target.value)}
-                autoComplete="current-password"
-              />
-            </div>
+            <Polje
+              label="Lozinka"
+              value={lozinka}
+              onChange={setLozinka}
+              type="password"
+              placeholder="••••••••"
+              required
+            />
 
             <label className="remember-label">
               <input
@@ -86,15 +76,12 @@ export default function Prijava() {
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
-
               <span>Zapamti me</span>
             </label>
 
             {greska && <p className="login-greska">{greska}</p>}
 
-            <button type="button" className="btn-login" onClick={handleSubmit}>
-              PRIJAVI SE
-            </button>
+            <Dugme tekst="PRIJAVI SE" tip="primarno" onClick={handleSubmit} />
 
             <div className="card-links">
               <a href="#">Zaboravili ste lozinku?</a>

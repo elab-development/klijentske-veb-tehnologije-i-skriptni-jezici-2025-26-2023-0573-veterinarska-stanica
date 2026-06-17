@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
+import Polje from "../components/Polje";
+import Dugme from "../components/Dugme";
 import "./Registracija.css";
 
 export default function Registracija() {
@@ -83,141 +85,103 @@ export default function Registracija() {
           <h2 className="section-title">-- LIČNI PODACI --</h2>
 
           <div className="row-2">
-            <div className="field">
-              <label>
-                Ime: <span className="req">*</span>
-              </label>
+            <Polje
+              label="Ime"
+              value={form.ime}
+              onChange={(val) => update("ime", val)}
+              placeholder="Unesite ime"
+              required
+            />
 
-              <input
-                type="text"
-                placeholder="Unesite ime"
-                value={form.ime}
-                onChange={(e) => update("ime", e.target.value)}
-              />
-            </div>
-
-            <div className="field">
-              <label>
-                Prezime: <span className="req">*</span>
-              </label>
-
-              <input
-                type="text"
-                placeholder="Unesite prezime"
-                value={form.prezime}
-                onChange={(e) => update("prezime", e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="field">
-            <label>
-              Broj telefona: <span className="req">*</span>
-            </label>
-
-            <input
-              type="tel"
-              placeholder="+381 6x xxxxxxx"
-              value={form.telefon}
-              onChange={(e) => update("telefon", e.target.value)}
+            <Polje
+              label="Prezime"
+              value={form.prezime}
+              onChange={(val) => update("prezime", val)}
+              placeholder="Unesite prezime"
+              required
             />
           </div>
 
-          <div className="field">
-            <label>Adresa:</label>
+          <Polje
+            label="Broj telefona"
+            value={form.telefon}
+            onChange={(val) => update("telefon", val)}
+            type="tel"
+            placeholder="+381 6x xxxxxxx"
+            required
+          />
 
-            <input
-              type="text"
-              placeholder="Ulica i broj, grad"
-              value={form.adresa}
-              onChange={(e) => update("adresa", e.target.value)}
-            />
-          </div>
+          <Polje
+            label="Adresa"
+            value={form.adresa}
+            onChange={(val) => update("adresa", val)}
+            placeholder="Ulica i broj, grad"
+          />
         </section>
 
         <section className="card">
           <h2 className="section-title">-- PODACI ZA NALOG --</h2>
 
-          <div className="field">
-            <label>
-              Email adresa: <span className="req">*</span>
-            </label>
-
-            <input
-              type="email"
-              placeholder="korisnik@email.com"
-              value={form.email}
-              onChange={(e) => update("email", e.target.value)}
-            />
-          </div>
+          <Polje
+            label="Email adresa"
+            value={form.email}
+            onChange={(val) => update("email", val)}
+            type="email"
+            placeholder="korisnik@email.com"
+            required
+          />
 
           <div className="row-2">
-            <div className="field">
-              <label>
-                Lozinka: <span className="req">*</span>
-              </label>
+            <Polje
+              label="Lozinka"
+              value={form.lozinka}
+              onChange={(val) => update("lozinka", val)}
+              type="password"
+              placeholder="••••••••"
+              required
+            />
 
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={form.lozinka}
-                onChange={(e) => update("lozinka", e.target.value)}
-              />
-            </div>
-
-            <div className="field">
-              <label>
-                Potvrdi lozinku: <span className="req">*</span>
-              </label>
-
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={form.potvrdiLozinku}
-                onChange={(e) => update("potvrdiLozinku", e.target.value)}
-              />
-            </div>
+            <Polje
+              label="Potvrdi lozinku"
+              value={form.potvrdiLozinku}
+              onChange={(val) => update("potvrdiLozinku", val)}
+              type="password"
+              placeholder="••••••••"
+              required
+            />
           </div>
 
           <p className="hint">Lozinka mora imati najmanje 8 karaktera</p>
         </section>
 
         <section className="card">
-  <h2 className="section-title">-- PODACI O LJUBIMCU (opciono)--</h2>
+          <h2 className="section-title">-- PODACI O LJUBIMCU (opciono)--</h2>
 
-  <div className="row-2">
-    <div className="field">
-      <label>
-        Ime ljubimca: 
-      </label>
+          <div className="row-2">
+            <Polje
+              label="Ime ljubimca"
+              value={form.imeLjubimca}
+              onChange={(val) => update("imeLjubimca", val)}
+              placeholder="Npr. Reks"
+            />
 
-      <input
-        type="text"
-        placeholder="Npr. Reks"
-        value={form.imeLjubimca}
-        onChange={(e) => update("imeLjubimca", e.target.value)}
-      />
-    </div>
+            <div className="field">
+              <label>Vrsta ljubimca</label>
+              <select
+                value={form.vrsta}
+                onChange={(e) => update("vrsta", e.target.value)}
+              >
+                <option value="">Izaberite vrstu</option>
+                <option value="Pas">Pas</option>
+                <option value="Mačka">Mačka</option>
+                <option value="Ptica">Ptica</option>
+                <option value="Egzotična životinja">Egzotična životinja</option>
+              </select>
+            </div>
+          </div>
 
-    <div className="field">
-      <label>
-        Vrsta ljubimca: 
-      </label>
-
-      <select
-        value={form.vrsta}
-        onChange={(e) => update("vrsta", e.target.value)}
-      >
-        <option value="">Izaberite vrstu</option>
-        <option value="Pas">Pas</option>
-        <option value="Mačka">Mačka</option>
-        <option value="Ptica">Ptica</option>
-        <option value="Egzotična životinja">Egzotična životinja</option>
-      </select>
-    </div>
-  </div>
-  <p className="hint">Više ljubimaca možete dodati u profilu</p>
-</section>
+          <p className="hint">Više ljubimaca možete dodati u profilu</p>
+        </section>
 
         <div className="checkboxes">
           <label className="check-label">
@@ -226,7 +190,6 @@ export default function Registracija() {
               checked={form.prihvataUslove}
               onChange={(e) => update("prihvataUslove", e.target.checked)}
             />
-
             <span>
               Prihvatam <a href="#">uslove korišćenja</a> i{" "}
               <a href="#">politiku privatnosti</a>{" "}
@@ -240,14 +203,11 @@ export default function Registracija() {
               checked={form.zeliObavjestenja}
               onChange={(e) => update("zeliObavjestenja", e.target.checked)}
             />
-
             <span>Želim da primam obaveštenja o akcijama i novostima</span>
           </label>
         </div>
 
-        <button type="button" className="btn-register" onClick={handleSubmit}>
-          REGISTRUJ SE
-        </button>
+        <Dugme tekst="REGISTRUJ SE" tip="primarno" onClick={handleSubmit} />
 
         <p className="login-link">
           Već imate nalog? <Link to="/prijava">Prijavite se ovde</Link>

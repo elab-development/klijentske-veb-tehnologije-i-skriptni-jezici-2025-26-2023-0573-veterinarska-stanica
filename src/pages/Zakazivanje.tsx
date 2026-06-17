@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Zakazivanje.css";
 import { useApp } from "../context/AppContext";
+import Dugme from "../components/Dugme";
 
 const USLUGE_LISTA = [
   { naziv: "Opšti pregled i dijagnoza", cena: "1.500 din" },
@@ -61,13 +62,10 @@ export default function Zakazivanje() {
   const danasnjiDan = danas.getDate();
 
   const prviDan = new Date(trenutnaGodina, trenutniMesec, 1).getDay();
-
   const pomerenPrviDan = prviDan === 0 ? 6 : prviDan - 1;
-
   const daniUMesecu = new Date(trenutnaGodina, trenutniMesec + 1, 0).getDate();
 
   const ljubimacObj = ljubimci.find((l) => l.id === izabranLjubimac);
-
   const uslugaObj = USLUGE_LISTA.find((u) => u.naziv === izabranaUsluga);
 
   const mozePotvrditi =
@@ -77,9 +75,7 @@ export default function Zakazivanje() {
     izabranoVreme !== "";
 
   const handlePotvrdi = () => {
-    if (!mozePotvrditi || !ljubimacObj || izabranDan === null) {
-      return;
-    }
+    if (!mozePotvrditi || !ljubimacObj || izabranDan === null) return;
 
     dodajTermin({
       datum: `${izabranDan}.${trenutniMesec + 1}.${trenutnaGodina}. ${izabranoVreme}`,
@@ -105,18 +101,14 @@ export default function Zakazivanje() {
       <div className="zakazivanje-stranica">
         <div className="uspeh-box">
           <div className="uspeh-ikona">✅</div>
-
           <h2>Termin uspešno zakazan!</h2>
-
           <p>Poslaćemo vam potvrdu na email adresu.</p>
 
-          <button
-            type="button"
-            className="nazad-btn"
+          <Dugme
+            tekst="Zakaži novi termin"
+            tip="sekundarno"
             onClick={handleNoviTermin}
-          >
-            Zakaži novi termin
-          </button>
+          />
         </div>
       </div>
     );
@@ -126,7 +118,6 @@ export default function Zakazivanje() {
     <div className="zakazivanje-stranica">
       <div className="zakazivanje-header">
         <h1>Zakazivanje veterinarskog termina</h1>
-
         <p>Pratite korake da biste zakazali termin za vašeg ljubimca.</p>
       </div>
 
@@ -149,9 +140,7 @@ export default function Zakazivanje() {
                   checked={izabranaUsluga === u.naziv}
                   onChange={() => setIzabranaUsluga(u.naziv)}
                 />
-
                 <span>{u.naziv}</span>
-
                 <span className="usluga-cena">od {u.cena}</span>
               </label>
             ))}
@@ -172,11 +161,8 @@ export default function Zakazivanje() {
                   <div className="lj-slika">
                     {l.vrsta === "Pas" ? "🐶" : "🐱"}
                   </div>
-
                   <strong>{l.ime}</strong>
-
                   <span className="tag-l">{l.vrsta}</span>
-
                   <p>
                     {l.rasa}, {l.starost} god.
                   </p>
@@ -186,7 +172,6 @@ export default function Zakazivanje() {
 
             <div className="napomena-polje">
               <label>Napomena (simptomi, posebni zahtevi):</label>
-
               <textarea
                 placeholder="Unesite napomenu za veterinara..."
                 value={napomena}
@@ -213,19 +198,17 @@ export default function Zakazivanje() {
                     ),
                   )}
 
-                  {Array.from({
-                    length: pomerenPrviDan,
-                  }).map((_, i) => (
-                    <div key={`p${i}`} />
+                  {Array.from({ length: pomerenPrviDan }).map((_, i) => (
+                    <div key={i} />
                   ))}
 
                   {Array.from({ length: daniUMesecu }, (_, i) => i + 1).map(
                     (d) => (
                       <div
                         key={d}
-                        className={`dan ${
-                          izabranDan === d ? "izabran-dan" : ""
-                        } ${d === danasnjiDan ? "danas" : ""}`}
+                        className={`dan ${izabranDan === d ? "izabran-dan" : ""} ${
+                          d === danasnjiDan ? "danas" : ""
+                        }`}
                         onClick={() => {
                           setIzabranDan(d);
                           setIzabranoVreme("");
@@ -236,23 +219,11 @@ export default function Zakazivanje() {
                     ),
                   )}
                 </div>
-
-                <div className="legenda">
-                  <span className="leg-izabran"></span>
-                  Izabran
-                  <span className="leg-zauzet"></span>
-                  Zauzeto
-                  <span className="leg-danas"></span>
-                  Danas
-                </div>
               </div>
 
               {izabranDan !== null && (
                 <div className="termini-lista">
-                  <h4>
-                    Slobodni termini — {izabranDan < 10 ? "0" : ""}
-                    {izabranDan}. {MESECI[trenutniMesec].toLowerCase()}:
-                  </h4>
+                  <h4>Slobodni termini</h4>
 
                   <div className="termini-grid">
                     {SLOBODNI_TERMINI.map((t) => (
@@ -275,71 +246,12 @@ export default function Zakazivanje() {
           </div>
 
           <div className="forma-sekcija">
-            <button
-              type="button"
-              className={`potvrdi-btn ${mozePotvrditi ? "" : "disabled"}`}
+            <Dugme
+              tekst="POTVRDI TERMIN"
+              tip="primarno"
               disabled={!mozePotvrditi}
               onClick={handlePotvrdi}
-            >
-              POTVRDI TERMIN
-            </button>
-
-            {!mozePotvrditi && (
-              <p className="upozorenje">
-                Molimo izaberite uslugu, ljubimca, datum i vreme.
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="pregled-panel">
-          <h3>-- PREGLED TERMINA --</h3>
-
-          <div className="pregled-red">
-            <small>Izabrana usluga:</small>
-            <strong>{izabranaUsluga || "—"}</strong>
-          </div>
-
-          <div className="pregled-red">
-            <small>Ljubimac:</small>
-
-            <strong>
-              {ljubimacObj ? `${ljubimacObj.ime} (${ljubimacObj.rasa})` : "—"}
-            </strong>
-          </div>
-
-          <div className="pregled-red">
-            <small>Datum i vreme:</small>
-
-            <strong>
-              {izabranDan !== null && izabranoVreme
-                ? `${izabranDan}.${trenutniMesec + 1}.${trenutnaGodina}. ${izabranoVreme}`
-                : "—"}
-            </strong>
-          </div>
-
-          <div className="pregled-red">
-            <small>Procenjena cena:</small>
-
-            <strong>{uslugaObj ? `od ${uslugaObj.cena}` : "—"}</strong>
-          </div>
-
-          <div className="napomene-box">
-            <strong>ℹ Važne napomene:</strong>
-
-            <p>• Molimo vas da stignete 5 min pre termina</p>
-
-            <p>• Potvrditi ili otkazati termin možete najkasnije 2h pre</p>
-
-            <p>• Potvrdni SMS će biti poslat na vaš broj</p>
-          </div>
-
-          <div className="kontakt-box">
-            <strong>Pitanja?</strong>
-
-            <p>📞 +381 11 234 5678</p>
-
-            <p>✉ info@stsvet.rs</p>
+            />
           </div>
         </div>
       </div>
