@@ -1,0 +1,258 @@
+.profil-stranica {
+  display: flex;
+  background: #b8d0af;
+  min-height: calc(100vh - 56px);
+}
+
+.nije-ulogovan {
+  text-align: center;
+  padding: 60px;
+}
+
+.profil-sidebar {
+  width: 200px;
+  min-width: 180px;
+  background: #b8d0af;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profil-avatar {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+.profil-ime {
+  font-weight: bold;
+  font-size: 14px;
+}
+.profil-email {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.izmeni-sliku-btn {
+  background: #e8b84b;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.sidebar-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  border-radius: 6px;
+  margin-bottom: 2px;
+}
+
+.sidebar-btn.aktivan {
+  background: #e8b84b;
+  font-weight: 600;
+}
+.sidebar-btn:hover:not(.aktivan) {
+  background: rgba(0, 0, 0, 0.06);
+}
+.odjava-btn {
+  color: #c0392b;
+  margin-top: 12px;
+}
+
+.profil-sadrzaj {
+  flex: 1;
+  padding: 24px;
+}
+
+.sekcija-profil {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.sekcija-profil > h2 {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #4f378b;
+  padding-bottom: 8px;
+}
+
+.dva-polja {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 14px;
+}
+.dva-polja > * {
+  flex: 1;
+}
+
+.sekcija-profil > .polje {
+  margin-bottom: 14px;
+}
+
+.uspeh-poruka {
+  color: #27ae60;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.ljubimci-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.ljubimci-header h2 {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.ljubimci-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ljubimac-kartica {
+  background: #f9f5ff;
+  border: 1px solid #e0d0ff;
+  border-radius: 10px;
+  padding: 16px;
+  width: 160px;
+  text-align: center;
+}
+
+.ljubimac-slika {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.ljubimac-kartica h3 {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.tag-l {
+  background: #ede0ff;
+  color: #4f378b;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin: 2px;
+  display: inline-block;
+}
+
+.ljubimac-kartica p {
+  font-size: 12px;
+  color: #666;
+  margin: 6px 0;
+}
+
+.dodaj-kartica {
+  border-style: dashed;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dodaj-kartica:hover {
+  background: #ede0ff;
+}
+
+.plus-ikona {
+  font-size: 2rem;
+  color: #aaa;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 360px;
+}
+
+.modal h3 {
+  margin-bottom: 16px;
+}
+
+.modal .polje {
+  margin-bottom: 12px;
+}
+
+.modal-dugmad {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.termini-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.termini-tabela th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #eee;
+  color: #555;
+  font-size: 13px;
+}
+
+.termini-tabela td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.status-potvrdjeno {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-cekanje {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.otkaziBtn {
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+}
