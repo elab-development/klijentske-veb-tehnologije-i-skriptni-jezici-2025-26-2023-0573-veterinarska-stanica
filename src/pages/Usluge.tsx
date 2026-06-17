@@ -1,23 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Usluge.css";
-import { Link } from 'react-router-dom';
-
-
-interface Usluga {
-  id: number;
-  naziv: string;
-  opis: string;
-  kategorija: "Pregledi" | "Vakcinacija" | "Hirurgija" | "Dijagnostika" | "Nega i grooming";
-  vrste: Array<"Pas" | "Mačka" | "Ptica" | "Egzotične životinje">;
-  cena: number;
-  ocene: number;
-  brojOcena: number;
-  slika?: string;
-  opisDetaljno?: string[];
-  ukljucuje?: string[];
-  koraci?: { naslov: string; opis: string }[];
-}
-
+import { Link } from "react-router-dom";
 
 export const SVE_USLUGE = [
   {
@@ -29,25 +12,26 @@ export const SVE_USLUGE = [
     cena: 1500,
     ocene: 4,
     brojOcena: 26,
-    slika: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
+    slika:
+      "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
 
     opisDetaljno: [
       "Detaljan klinički pregled celokupnog zdravstvenog stanja.",
-      "Procena srca, pluća, kože, zuba i opšte kondicije."
+      "Procena srca, pluća, kože, zuba i opšte kondicije.",
     ],
 
     ukljucuje: [
       "Pregled očiju i ušiju",
       "Auskultacija srca i pluća",
       "Palpacija abdomena",
-      "Procena opšteg stanja"
+      "Procena opšteg stanja",
     ],
 
     koraci: [
       { naslov: "Prijem", opis: "Registracija i kratka anamneza" },
       { naslov: "Pregled", opis: "Veterinar obavlja kompletan pregled" },
-      { naslov: "Preporuke", opis: "Daje se terapija ili savet" }
-    ]
+      { naslov: "Preporuke", opis: "Daje se terapija ili savet" },
+    ],
   },
 
   {
@@ -59,24 +43,25 @@ export const SVE_USLUGE = [
     cena: 2000,
     ocene: 5,
     brojOcena: 13,
-    slika: "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
+    slika:
+      "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
 
     opisDetaljno: [
       "Vakcinacija štiti ljubimca od najčešćih zaraznih bolesti.",
-      "Program se prilagođava uzrastu i zdravstvenom stanju."
+      "Program se prilagođava uzrastu i zdravstvenom stanju.",
     ],
 
     ukljucuje: [
       "Pregled pre vakcinacije",
       "Primena vakcine",
-      "Saveti nakon vakcinacije"
+      "Saveti nakon vakcinacije",
     ],
 
     koraci: [
       { naslov: "Pregled", opis: "Provera zdravstvenog stanja" },
       { naslov: "Vakcinacija", opis: "Primena vakcine" },
-      { naslov: "Praćenje", opis: "Kratko zadržavanje nakon injekcije" }
-    ]
+      { naslov: "Praćenje", opis: "Kratko zadržavanje nakon injekcije" },
+    ],
   },
 
   {
@@ -88,24 +73,21 @@ export const SVE_USLUGE = [
     cena: 3500,
     ocene: 4,
     brojOcena: 5,
-    slika: "https://t3.ftcdn.net/jpg/05/72/79/28/360_F_572792806_R2ouiFMMsjH9QoqDtmTTE60qvBfFBNNF.jpg",
+    slika:
+      "https://t3.ftcdn.net/jpg/05/72/79/28/360_F_572792806_R2ouiFMMsjH9QoqDtmTTE60qvBfFBNNF.jpg",
 
     opisDetaljno: [
       "Brza i precizna dijagnostika povreda i bolesti.",
-      "Minimalna doza zračenja i bezbedan postupak."
+      "Minimalna doza zračenja i bezbedan postupak.",
     ],
 
-    ukljucuje: [
-      "Rendgensko snimanje",
-      "Tumačenje nalaza",
-      "Digitalna kopija"
-    ],
+    ukljucuje: ["Rendgensko snimanje", "Tumačenje nalaza", "Digitalna kopija"],
 
     koraci: [
       { naslov: "Priprema", opis: "Pozicioniranje ljubimca" },
       { naslov: "Snimanje", opis: "Izrada rendgena" },
-      { naslov: "Analiza", opis: "Veterinar tumači snimak" }
-    ]
+      { naslov: "Analiza", opis: "Veterinar tumači snimak" },
+    ],
   },
 
   {
@@ -117,24 +99,21 @@ export const SVE_USLUGE = [
     cena: 4000,
     ocene: 5,
     brojOcena: 11,
-    slika: "https://mitchamvet.com.au/wp-content/uploads/2021/10/MPH-Ultrasound-on-Cat.jpg",
+    slika:
+      "https://mitchamvet.com.au/wp-content/uploads/2021/10/MPH-Ultrasound-on-Cat.jpg",
 
     opisDetaljno: [
       "Bezbolna i sigurna dijagnostička metoda.",
-      "Detaljan pregled organa u realnom vremenu."
+      "Detaljan pregled organa u realnom vremenu.",
     ],
 
-    ukljucuje: [
-      "Ultrazvučni pregled",
-      "Izveštaj veterinara",
-      "Preporuke"
-    ],
+    ukljucuje: ["Ultrazvučni pregled", "Izveštaj veterinara", "Preporuke"],
 
     koraci: [
       { naslov: "Priprema", opis: "Priprema regije pregleda" },
       { naslov: "Pregled", opis: "Ultrazvučno snimanje" },
-      { naslov: "Izveštaj", opis: "Analiza nalaza" }
-    ]
+      { naslov: "Izveštaj", opis: "Analiza nalaza" },
+    ],
   },
 
   {
@@ -146,25 +125,26 @@ export const SVE_USLUGE = [
     cena: 8000,
     ocene: 5,
     brojOcena: 8,
-    slika: "https://cobb.vet/wp-content/uploads/2025/03/dog-post-surgery-recovery.jpg",
+    slika:
+      "https://cobb.vet/wp-content/uploads/2025/03/dog-post-surgery-recovery.jpg",
 
     opisDetaljno: [
       "Rutinski hirurški zahvat u opštoj anesteziji.",
-      "Smanjuje rizik od bolesti i neželjenog razmnožavanja."
+      "Smanjuje rizik od bolesti i neželjenog razmnožavanja.",
     ],
 
     ukljucuje: [
       "Preoperativni pregled",
       "Anestezija",
       "Operacija",
-      "Postoperativna nega"
+      "Postoperativna nega",
     ],
 
     koraci: [
       { naslov: "Priprema", opis: "Analize i pregled" },
       { naslov: "Operacija", opis: "Izvođenje zahvata" },
-      { naslov: "Oporavak", opis: "Praćenje nakon operacije" }
-    ]
+      { naslov: "Oporavak", opis: "Praćenje nakon operacije" },
+    ],
   },
 
   {
@@ -176,25 +156,21 @@ export const SVE_USLUGE = [
     cena: 2500,
     ocene: 4,
     brojOcena: 19,
-    slika: "https://img.freepik.com/premium-photo/dog-grooming-salon-dog-get-shower-domestic-animal-get-beauty-procedures-beauty-salon-dogs-bath_170532-4008.jpg",
+    slika:
+      "https://img.freepik.com/premium-photo/dog-grooming-salon-dog-get-shower-domestic-animal-get-beauty-procedures-beauty-salon-dogs-bath_170532-4008.jpg",
 
     opisDetaljno: [
       "Kupanje, šišanje i četkanje uz profesionalne preparate.",
-      "Prilagođeno tipu dlake."
+      "Prilagođeno tipu dlake.",
     ],
 
-    ukljucuje: [
-      "Kupanje",
-      "Šišanje",
-      "Četkanje",
-      "Sušenje"
-    ],
+    ukljucuje: ["Kupanje", "Šišanje", "Četkanje", "Sušenje"],
 
     koraci: [
       { naslov: "Kupanje", opis: "Pranje specijalnim šamponom" },
       { naslov: "Šišanje", opis: "Oblikovanje dlake" },
-      { naslov: "Završna nega", opis: "Sušenje i stilizovanje" }
-    ]
+      { naslov: "Završna nega", opis: "Sušenje i stilizovanje" },
+    ],
   },
 
   {
@@ -206,24 +182,21 @@ export const SVE_USLUGE = [
     cena: 1800,
     ocene: 4,
     brojOcena: 3,
-    slika: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&q=80",
+    slika:
+      "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600&q=80",
 
     opisDetaljno: [
       "Procena zdravlja perja, kljuna i disanja.",
-      "Specijalizovan pregled za ptice."
+      "Specijalizovan pregled za ptice.",
     ],
 
-    ukljucuje: [
-      "Pregled perja",
-      "Pregled kljuna",
-      "Saveti o ishrani"
-    ],
+    ukljucuje: ["Pregled perja", "Pregled kljuna", "Saveti o ishrani"],
 
     koraci: [
       { naslov: "Procena", opis: "Pregled ptice" },
       { naslov: "Analiza", opis: "Procena zdravlja" },
-      { naslov: "Saveti", opis: "Preporuke vlasniku" }
-    ]
+      { naslov: "Saveti", opis: "Preporuke vlasniku" },
+    ],
   },
 
   {
@@ -235,24 +208,21 @@ export const SVE_USLUGE = [
     cena: 2200,
     ocene: 4,
     brojOcena: 4,
-    slika: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600&q=80",
+    slika:
+      "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=600&q=80",
 
     opisDetaljno: [
       "Specijalizovan pregled egzotičnih vrsta.",
-      "Procena specifičnih potreba."
+      "Procena specifičnih potreba.",
     ],
 
-    ukljucuje: [
-      "Pregled kondicije",
-      "Procena ishrane",
-      "Saveti za negu"
-    ],
+    ukljucuje: ["Pregled kondicije", "Procena ishrane", "Saveti za negu"],
 
     koraci: [
       { naslov: "Pregled", opis: "Procena stanja" },
       { naslov: "Analiza", opis: "Dijagnostika" },
-      { naslov: "Saveti", opis: "Preporuke" }
-    ]
+      { naslov: "Saveti", opis: "Preporuke" },
+    ],
   },
 
   {
@@ -264,24 +234,21 @@ export const SVE_USLUGE = [
     cena: 2800,
     ocene: 5,
     brojOcena: 22,
-    slika: "https://felinefascination.com/wp-content/uploads/2025/08/cat_blood_test_analysis_7t7ll.jpg",
+    slika:
+      "https://felinefascination.com/wp-content/uploads/2025/08/cat_blood_test_analysis_7t7ll.jpg",
 
     opisDetaljno: [
       "Kompletna krvna slika i biohemija.",
-      "Procena unutrašnjeg zdravlja."
+      "Procena unutrašnjeg zdravlja.",
     ],
 
-    ukljucuje: [
-      "Uzimanje uzorka",
-      "Analiza krvi",
-      "Izveštaj"
-    ],
+    ukljucuje: ["Uzimanje uzorka", "Analiza krvi", "Izveštaj"],
 
     koraci: [
       { naslov: "Uzorak", opis: "Vađenje krvi" },
       { naslov: "Analiza", opis: "Laboratorija" },
-      { naslov: "Rezultat", opis: "Dijagnoza" }
-    ]
+      { naslov: "Rezultat", opis: "Dijagnoza" },
+    ],
   },
 
   {
@@ -297,20 +264,16 @@ export const SVE_USLUGE = [
 
     opisDetaljno: [
       "Profesionalno čišćenje zuba pod anestezijom.",
-      "Prevencija bolesti zuba."
+      "Prevencija bolesti zuba.",
     ],
 
-    ukljucuje: [
-      "Uklanjanje kamenca",
-      "Poliranje",
-      "Kontrola"
-    ],
+    ukljucuje: ["Uklanjanje kamenca", "Poliranje", "Kontrola"],
 
     koraci: [
       { naslov: "Priprema", opis: "Anestezija" },
       { naslov: "Čišćenje", opis: "Uklanjanje kamenca" },
-      { naslov: "Oporavak", opis: "Buđenje" }
-    ]
+      { naslov: "Oporavak", opis: "Buđenje" },
+    ],
   },
 
   {
@@ -322,24 +285,21 @@ export const SVE_USLUGE = [
     cena: 1600,
     ocene: 4,
     brojOcena: 2,
-    slika: "https://media.istockphoto.com/id/1466368811/photo/vaccine.jpg?s=612x612&w=0&k=20&c=WpKYCcx7RWtyDd-tn9-0j5CkaKvgq2HJ-rRRsIBc-xs=",
+    slika:
+      "https://media.istockphoto.com/id/1466368811/photo/vaccine.jpg?s=612x612&w=0&k=20&c=WpKYCcx7RWtyDd-tn9-0j5CkaKvgq2HJ-rRRsIBc-xs=",
 
     opisDetaljno: [
       "Zaštita ptica od bolesti.",
-      "Program vakcinacije po vrsti."
+      "Program vakcinacije po vrsti.",
     ],
 
-    ukljucuje: [
-      "Vakcinacija",
-      "Pregled",
-      "Praćenje"
-    ],
+    ukljucuje: ["Vakcinacija", "Pregled", "Praćenje"],
 
     koraci: [
       { naslov: "Pregled", opis: "Procena ptice" },
       { naslov: "Vakcinacija", opis: "Davanje vakcine" },
-      { naslov: "Praćenje", opis: "Posle vakcine" }
-    ]
+      { naslov: "Praćenje", opis: "Posle vakcine" },
+    ],
   },
 
   {
@@ -351,25 +311,22 @@ export const SVE_USLUGE = [
     cena: 1200,
     ocene: 5,
     brojOcena: 31,
-    slika: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
+    slika:
+      "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80",
 
     opisDetaljno: [
       "Identifikacija ljubimca mikročipom.",
-      "Registracija u bazu podataka."
+      "Registracija u bazu podataka.",
     ],
 
-    ukljucuje: [
-      "Ugradnja čipa",
-      "Registracija",
-      "Provera"
-    ],
+    ukljucuje: ["Ugradnja čipa", "Registracija", "Provera"],
 
     koraci: [
       { naslov: "Ugradnja", opis: "Postavljanje čipa" },
       { naslov: "Registracija", opis: "Upis u sistem" },
-      { naslov: "Završetak", opis: "Provera ispravnosti" }
-    ]
-  }
+      { naslov: "Završetak", opis: "Provera ispravnosti" },
+    ],
+  },
 ];
 
 const KATEGORIJE = [
@@ -381,22 +338,27 @@ const KATEGORIJE = [
   { label: "Nega i grooming", vrednost: "Nega i grooming" },
 ];
 
-const VRSTE_LJUBIMACA = ["Pas", "Mačka", "Ptica", "Egzotične životinje"] as const;
+const VRSTE_LJUBIMACA = [
+  "Pas",
+  "Mačka",
+  "Ptica",
+  "Egzotične životinje",
+] as const;
 
 const ITEMS_PER_PAGE = 4;
-
 
 function Stars({ n, total }: { n: number; total: number }) {
   return (
     <div className="card-stars">
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i} className="star">{i < n ? "★" : "☆"}</span>
+        <span key={i} className="star">
+          {i < n ? "★" : "☆"}
+        </span>
       ))}
       <span className="review-count">({total})</span>
     </div>
   );
 }
-
 
 export default function Usluge() {
   const [search, setSearch] = useState("");
@@ -408,61 +370,45 @@ export default function Usluge() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-  setPage(1);
-}, [search, kategorija, vrsteFilter, minCena, maxCena]);
-  
+    setPage(1);
+  }, [search, kategorija, vrsteFilter, minCena, maxCena]);
 
-  
-
- const resetFilters = () => {
-  setSearch("");
-  setKategorija("");
-  setVrsteFilter([]);
-  setMinCena(0);
-  setMaxCena(20000);
-  setPage(1);
-};
+  const resetFilters = () => {
+    setSearch("");
+    setKategorija("");
+    setVrsteFilter([]);
+    setMinCena(0);
+    setMaxCena(20000);
+    setPage(1);
+  };
 
   const toggleVrsta = (v: string) =>
     setVrsteFilter((prev) =>
-      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]
+      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v],
     );
 
-  
   let filtered = SVE_USLUGE.filter((u) => {
-  if (
-    search &&
-    !u.naziv.toLowerCase().includes(search.toLowerCase())
-  ) {
-    return false;
-  }
+    if (search && !u.naziv.toLowerCase().includes(search.toLowerCase())) {
+      return false;
+    }
 
-  if (
-    kategorija &&
-    u.kategorija !== kategorija
-  ) {
-    return false;
-  }
+    if (kategorija && u.kategorija !== kategorija) {
+      return false;
+    }
 
-  if (
-    vrsteFilter.length &&
-    !vrsteFilter.some((v) =>
-      u.vrste.includes(v as any)
-    )
-  ) {
-    return false;
-  }
+    if (
+      vrsteFilter.length &&
+      !vrsteFilter.some((v) => u.vrste.includes(v as any))
+    ) {
+      return false;
+    }
 
-  if (
-    u.cena < minCena ||
-    u.cena > maxCena
-  ) {
-    return false;
-  }
+    if (u.cena < minCena || u.cena > maxCena) {
+      return false;
+    }
 
-  return true;
-});
-
+    return true;
+  });
 
   filtered = [...filtered].sort((a, b) => {
     if (sort === "popularnost") return b.brojOcena - a.brojOcena;
@@ -473,26 +419,24 @@ export default function Usluge() {
   });
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paged = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  const paged = filtered.slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE,
+  );
 
-  
   const countFor = (kat: string) =>
     SVE_USLUGE.filter((u) => (kat ? u.kategorija === kat : true)).length;
 
   return (
     <>
-      
-
-      
       <header className="page-header">
         <h1>Naše veterinarske usluge</h1>
-        <p>Profesionalna briga o vašim ljubimcima – od preventive do hirurgije</p>
+        <p>
+          Profesionalna briga o vašim ljubimcima – od preventive do hirurgije
+        </p>
       </header>
 
-      
       <div className="usluge-layout">
-
-        
         <aside className="sidebar">
           <div className="sidebar-section">
             <div className="sidebar-title">-- Pretraga --</div>
@@ -569,13 +513,11 @@ export default function Usluge() {
             />
           </div>
 
-          
           <button className="btn-reset" onClick={resetFilters}>
             Resetuj filtere
           </button>
         </aside>
 
-        
         <main className="usluge-main">
           <div className="usluge-topbar">
             <span className="count">
@@ -593,52 +535,57 @@ export default function Usluge() {
             </select>
           </div>
 
-         <div className="usluge-grid">
-  {filtered.length === 0 ? (
-    <div className="no-results">
-      Usluga nije pronađena
-    </div>
-  ) : (
-    paged.map((u) => (
-      <Link to={`/usluga/${u.id}`} key={u.id} className="service-card-link">
+          <div className="usluge-grid">
+            {filtered.length === 0 ? (
+              <div className="no-results">Usluga nije pronađena</div>
+            ) : (
+              paged.map((u) => (
+                <Link
+                  to={`/usluga/${u.id}`}
+                  key={u.id}
+                  className="service-card-link"
+                >
+                  <div className="service-card">
+                    {u.slika ? (
+                      <img className="card-img" src={u.slika} alt={u.naziv} />
+                    ) : (
+                      <div className="card-img-placeholder">{u.naziv}</div>
+                    )}
 
-        <div className="service-card">
-          {u.slika ? (
-            <img className="card-img" src={u.slika} alt={u.naziv} />
-          ) : (
-            <div className="card-img-placeholder">{u.naziv}</div>
-          )}
+                    <div className="card-body">
+                      <div className="card-tags">
+                        <span className="tag">{u.kategorija}</span>
+                        {u.vrste.slice(0, 2).map((v) => (
+                          <span key={v} className="tag">
+                            {v}
+                          </span>
+                        ))}
+                      </div>
 
-          <div className="card-body">
-            <div className="card-tags">
-              <span className="tag">{u.kategorija}</span>
-              {u.vrste.slice(0, 2).map((v) => (
-                <span key={v} className="tag">{v}</span>
-              ))}
-            </div>
+                      <div className="card-title">{u.naziv}</div>
+                      <div className="card-desc">{u.opis}</div>
 
-            <div className="card-title">{u.naziv}</div>
-            <div className="card-desc">{u.opis}</div>
+                      <Stars n={u.ocene} total={u.brojOcena} />
 
-            <Stars n={u.ocene} total={u.brojOcena} />
-
-            <div className="card-footer">
-              <span className="card-price">
-                od {u.cena.toLocaleString("sr-RS")} din
-              </span>
-              <button className="btn-info">Više info</button>
-            </div>
+                      <div className="card-footer">
+                        <span className="card-price">
+                          od {u.cena.toLocaleString("sr-RS")} din
+                        </span>
+                        <button className="btn-info">Više info</button>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
 
-        </div>
-      </Link>
-    ))
-  )}
-</div>
-          
           {totalPages > 1 && (
             <div className="pagination">
-              <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1}>
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+              >
                 ← Preth.
               </button>
               {Array.from({ length: totalPages }).map((_, i) => (
@@ -650,15 +597,16 @@ export default function Usluge() {
                   {i + 1}
                 </button>
               ))}
-              <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page === totalPages}>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+              >
                 Sled. →
               </button>
             </div>
           )}
         </main>
       </div>
-
-  
     </>
   );
 }

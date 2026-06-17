@@ -7,51 +7,6 @@ interface Props {
   ljubimac: Ljubimac;
 }
 
-// Mapiranje rase na dog.ceo API naziv rase
-function rasaNaApiNaziv(rasa: string): string {
-  const mapa: Record<string, string> = {
-    labrador: "labrador",
-    "labrador retriver": "labrador",
-    "labrador retriever": "labrador",
-    "golden retriver": "retriever/golden",
-    "golden retriever": "retriever/golden",
-    "nemački ovčar": "germanshepherd",
-    "nemacki ovcar": "germanshepherd",
-    pudla: "poodle",
-    pudlica: "poodle",
-    buldog: "bulldog/english",
-    dalmatinac: "dalmatian",
-    husky: "husky",
-    "siberian husky": "husky",
-    buldžija: "bulldog/french",
-    "francuski buldog": "bulldog/french",
-    boks: "boxer",
-    bokser: "boxer",
-    doberman: "doberman",
-    rotvajler: "rottweiler",
-    rottweiler: "rottweiler",
-    čivava: "chihuahua",
-    chihuahua: "chihuahua",
-    beagle: "beagle",
-    šnaucer: "schnauzer/giant",
-    "border koli": "collie/border",
-    "border collie": "collie/border",
-    dalmatian: "dalmatian",
-    corgi: "corgi/cardigan",
-    "shar pei": "sharpei",
-    akita: "akita",
-    basenji: "basenji",
-    maltez: "maltese",
-    maltese: "maltese",
-    šihtzu: "shihtzu",
-    "shih tzu": "shihtzu",
-    yorkshire: "yorkshire",
-    "yorkshire terrier": "yorkshire",
-  };
-  const kljuc = rasa.toLowerCase().trim();
-  return mapa[kljuc] || "labrador"; // default labrador ako rasa nije poznata
-}
-
 export default function LjubimacKartica({ ljubimac }: Props) {
   const [slika, setSlika] = useState<string>("");
   const [ucitava, setUcitava] = useState(false);
@@ -59,12 +14,10 @@ export default function LjubimacKartica({ ljubimac }: Props) {
 
   useEffect(() => {
     if (ljubimac.vrsta.toLowerCase() !== "pas") return;
-
-    const apiRasa = rasaNaApiNaziv(ljubimac.rasa);
     setUcitava(true);
     setGreska(false);
 
-    fetch(`https://dog.ceo/api/breed/${apiRasa}/images/random`)
+    fetch("https://dog.ceo/api/breeds/image/random")
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {

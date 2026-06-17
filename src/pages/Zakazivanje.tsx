@@ -66,7 +66,6 @@ export default function Zakazivanje() {
   const daniUMesecu = new Date(trenutnaGodina, trenutniMesec + 1, 0).getDate();
 
   const ljubimacObj = ljubimci.find((l) => l.id === izabranLjubimac);
-  const uslugaObj = USLUGE_LISTA.find((u) => u.naziv === izabranaUsluga);
 
   const mozePotvrditi =
     izabranaUsluga !== "" &&
