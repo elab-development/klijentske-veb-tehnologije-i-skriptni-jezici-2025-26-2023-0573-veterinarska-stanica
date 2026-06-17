@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import Polje from "../components/Polje";
 import Dugme from "../components/Dugme";
+import LjubimacKartica from "../components/LjubimacKartica";
 import "./Profil.css";
 
 export default function Profil() {
@@ -153,6 +154,9 @@ export default function Profil() {
               />
             </div>
             <div className="ljubimci-grid">
+              {ljubimci.map((l) => (
+                <LjubimacKartica key={l.id} ljubimac={l} />
+              ))}
               <div
                 className="ljubimac-kartica dodaj-kartica"
                 onClick={() => setShowDodajLjubimca(true)}
