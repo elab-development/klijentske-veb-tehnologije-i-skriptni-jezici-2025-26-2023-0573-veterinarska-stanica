@@ -310,6 +310,29 @@ ul {
   }
 }
 
+.field input,
+.card-body input[type="email"],
+.card-body input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-input);
+  background: var(--white);
+  font-size: 0.9rem;
+  color: var(--text-dark); /* Ovo će sada sigurno primeniti tamna slova */
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Isto uradi i za :focus stanje */
+.field input:focus,
+.card-body input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(123, 63, 160, 0.18);
+}
+
 @media (max-width: 768px) {
   .login-card {
     flex-direction: column;

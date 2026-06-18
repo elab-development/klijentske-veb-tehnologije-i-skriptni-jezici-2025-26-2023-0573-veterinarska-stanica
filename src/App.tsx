@@ -5,7 +5,7 @@ import { AppProvider, useApp } from "./context/AppContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import Profil from "./pages/Profil";
 import Prijava from "./pages/Prijava";
 import Registracija from "./pages/Registracija";
 import Zakazivanje from "./pages/Zakazivanje";
@@ -44,13 +44,25 @@ function App() {
               <Route path="/usluga/:id" element={<PojedinacnaUsluga />} />
               <Route path="/kontakt" element={<Kontakt />} />
               <Route path="/o-nama" element={<ONama />} />
-              <Route path="/politika-privatnosti" element={<PolitikaPrivatnosti />} />
+              <Route
+                path="/politika-privatnosti"
+                element={<PolitikaPrivatnosti />}
+              />
 
               <Route
                 path="/zakazivanje"
                 element={
                   <ZasticenaRuta>
                     <Zakazivanje />
+                  </ZasticenaRuta>
+                }
+              />
+
+              <Route
+                path="/profil"
+                element={
+                  <ZasticenaRuta>
+                    <Profil />
                   </ZasticenaRuta>
                 }
               />

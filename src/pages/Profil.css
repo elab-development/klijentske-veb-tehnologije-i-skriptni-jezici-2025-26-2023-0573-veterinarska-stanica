@@ -287,3 +287,40 @@
     white-space: nowrap;
   }
 }
+
+/* --- POPRAVKA ZA INPUT POLJA NA PROFILU --- */
+
+.sekcija-profil input,
+.modal input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #b0b0b0; /* Blaga siva ivica */
+  border-radius: 6px;
+  background: #ffffff; /* Bela pozadina polja */
+  font-size: 0.9rem;
+  color: #2a2a2a; /* TAMNA SLOVA KADA KUCAŠ */
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Efekat kada klikneš u polje (Focus) */
+.sekcija-profil input:focus,
+.modal input:focus {
+  border-color: #4f378b; /* Ljubičasta boja iz tvog profila */
+  box-shadow: 0 0 0 3px rgba(79, 55, 139, 0.15);
+}
+
+/* Boja za placeholder (tekst koji stoji pre nego što počneš da kucaš) */
+.sekcija-profil input::placeholder,
+.modal input::placeholder {
+  color: #aaa;
+}
+
+/* Rešenje za pretraživače koji automatski popunjavaju polja (Autofill) */
+.sekcija-profil input:-webkit-autofill,
+.modal input:-webkit-autofill {
+  -webkit-text-fill-color: #2a2a2a !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
