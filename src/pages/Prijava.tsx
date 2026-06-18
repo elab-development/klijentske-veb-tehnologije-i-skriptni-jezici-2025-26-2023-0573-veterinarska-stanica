@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import Polje from "../components/Polje";
@@ -13,6 +13,15 @@ export default function Prijava() {
   const [lozinka, setLozinka] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [greska, setGreska] = useState("");
+
+  useEffect(() => {
+    const zapamceniEmail = localStorage.getItem("zapamceniEmail");
+
+    if (zapamceniEmail) {
+      setEmail(zapamceniEmail);
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleSubmit = () => {
     setGreska("");

@@ -19,3 +19,17 @@ body {
 .app-content {
   flex: 1;
 }
+
+input,
+textarea,
+select {
+  color: #222 !important;
+  background-color: #ffffff;
+  font-weight: 400;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+  font-weight: 400;
+}

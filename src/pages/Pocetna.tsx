@@ -7,14 +7,16 @@ const usluge = [
     naziv: "Pregled i dijagnoza",
     opis: "Opšti pregled zdravstvenog stanja vašeg ljubimca.",
     cena: "od 1500 din",
-    slika: "https://hastingsvet.com/wp-content/uploads/2024/09/Hastings-Veterinary-Hospital-Benefits-of-a-Recheck-Examination-Part-2-For-Cats.jpg",
+    slika:
+      "https://hastingsvet.com/wp-content/uploads/2024/09/Hastings-Veterinary-Hospital-Benefits-of-a-Recheck-Examination-Part-2-For-Cats.jpg",
   },
   {
     id: 2,
     naziv: "Vakcinacija",
     opis: "Zaštita ljubimca od zaraznih bolesti.",
     cena: "od 2000 din",
-    slika: "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
+    slika:
+      "https://petsure.com.au/wp-content/uploads/2023/06/PuppyVax_Hero-1-1024x551.jpg",
   },
   {
     id: 3,
@@ -50,30 +52,30 @@ export default function Pocetna() {
     setForma((prev) => ({ ...prev, [field]: value }));
 
   const loadCat = async () => {
-  try {
-    setLoading(true);
-    setError("");
+    try {
+      setLoading(true);
+      setError("");
 
-    const response = await fetch(
-      "https://api.thecatapi.com/v1/images/search"
-    );
+      const response = await fetch(
+        "https://api.thecatapi.com/v1/images/search",
+      );
 
-    if (!response.ok) {
-      throw new Error("Greška pri učitavanju.");
+      if (!response.ok) {
+        throw new Error("Greška pri učitavanju.");
+      }
+
+      const data = await response.json();
+
+      setCatImage(data[0].url);
+    } catch {
+      setError("Nije moguće učitati pacijenta dana.");
+    } finally {
+      setLoading(false);
     }
-
-    const data = await response.json();
-
-    setCatImage(data[0].url);
-  } catch {
-    setError("Nije moguće učitati pacijenta dana.");
-  } finally {
-    setLoading(false);
-  }
-};
-useEffect(() => {
-  loadCat();
-}, []);
+  };
+  useEffect(() => {
+    loadCat();
+  }, []);
 
   const handleZakazivanje = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -86,9 +88,6 @@ useEffect(() => {
 
   return (
     <div className="page-wrapper">
-      
-
-      
       <section className="hero">
         <div className="hero-overlay" />
         <img
@@ -100,19 +99,34 @@ useEffect(() => {
           <h1>Dobro došli u Veterinarsku Ambulantu!</h1>
           <p>Zajedno brinemo o vašim ljubimcima.</p>
           <div className="hero-btns">
-            <a href="/zakazivanje" className="btn-primary">ZAKAŽI TERMIN</a>
-            <a href="/usluge" className="btn-outline">POGLEDAJ USLUGE</a>
+            <a href="/zakazivanje" className="btn-primary">
+              ZAKAŽI TERMIN
+            </a>
+            <a href="/usluge" className="btn-outline">
+              POGLEDAJ USLUGE
+            </a>
           </div>
         </div>
       </section>
 
-      
       <section className="features">
         {[
-          { icon: "🩺", naziv: "Iskusni veterinari", opis: "Više od 10 god. iskustva" },
-          { icon: "🔬", naziv: "Moderna oprema", opis: "Najnovija tehnologija" },
+          {
+            icon: "🩺",
+            naziv: "Iskusni veterinari",
+            opis: "Više od 10 god. iskustva",
+          },
+          {
+            icon: "🔬",
+            naziv: "Moderna oprema",
+            opis: "Najnovija tehnologija",
+          },
           { icon: "⚡", naziv: "Hitne intervencije", opis: "Dostupni 24/7" },
-          { icon: "💰", naziv: "Povoljne cene", opis: "Transparentni cenovnik" },
+          {
+            icon: "💰",
+            naziv: "Povoljne cene",
+            opis: "Transparentni cenovnik",
+          },
         ].map((f) => (
           <div className="feature-item" key={f.naziv}>
             <span className="feature-icon">{f.icon}</span>
@@ -122,7 +136,6 @@ useEffect(() => {
         ))}
       </section>
 
-      
       <section className="section">
         <h2 className="section-heading">-- POPULARNE USLUGE --</h2>
         <div className="usluge-grid">
@@ -134,54 +147,39 @@ useEffect(() => {
                 <p>{u.opis}</p>
                 <div className="usluga-footer">
                   <span className="usluga-cena">{u.cena}</span>
-                  <a href={`/usluga/${u.id}`} className="btn-info">Više info</a>
+                  <a href={`/usluga/${u.id}`} className="btn-info">
+                    Više info
+                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        
       </section>
 
-          <section className="section">
-  <h2 className="section-heading">
-    -- UPOZNAJ PACIJENTA DANA --
-  </h2>
+      <section className="section">
+        <h2 className="section-heading">-- UPOZNAJ PACIJENTA DANA --</h2>
 
-  <div className="patient-card">
+        <div className="patient-card">
+          {loading && <p>Učitavanje pacijenta...</p>}
 
-    {loading && <p>Učitavanje pacijenta...</p>}
+          {error && <p className="error-text">{error}</p>}
 
-    {error && <p className="error-text">{error}</p>}
+          {!loading && !error && catImage && (
+            <>
+              <img src={catImage} alt="Pacijent dana" className="patient-img" />
 
-    {!loading && !error && catImage && (
-      <>
-        <img
-          src={catImage}
-          alt="Pacijent dana"
-          className="patient-img"
-        />
+              <h3>Pacijent dana </h3>
 
-        <h3>Pacijent dana </h3>
+              <p>
+                Ovaj mali pacijent danas je u centru pažnje naše ambulante :)
+              </p>
+            </>
+          )}
+        </div>
+      </section>
 
-        <p>
-          Ovaj mali pacijent danas je u centru pažnje naše ambulante :)
-        </p>
-      </>
-    )}
-
-    <button
-      className="btn-zakazi"
-      onClick={loadCat}
-    >
-      Novi pacijent
-    </button>
-
-  </div>
-</section>
-      
       <section className="section two-col">
-        
         <div className="booking-col">
           <h2 className="section-heading">-- ZAKAŽI TERMIN BRZO --</h2>
           <div className="booking-card">
@@ -202,7 +200,9 @@ useEffect(() => {
               >
                 <option value="">Izaberite uslugu ▼</option>
                 {vrsjeUsluga.map((v) => (
-                  <option key={v} value={v}>{v}</option>
+                  <option key={v} value={v}>
+                    {v}
+                  </option>
                 ))}
               </select>
             </div>
@@ -220,7 +220,6 @@ useEffect(() => {
           </div>
         </div>
 
-        
         <div className="reviews-col">
           <h2 className="section-heading">-- RECENZIJE KORISNIKA --</h2>
           <div className="reviews-list">
@@ -228,7 +227,10 @@ useEffect(() => {
               <div className="review-card" key={r.ime}>
                 <div className="review-header">
                   <strong>{r.ime}</strong>
-                  <span className="stars">{"★".repeat(r.ocena)}{"☆".repeat(5 - r.ocena)}</span>
+                  <span className="stars">
+                    {"★".repeat(r.ocena)}
+                    {"☆".repeat(5 - r.ocena)}
+                  </span>
                 </div>
                 <p>"{r.tekst}"</p>
               </div>
@@ -236,8 +238,6 @@ useEffect(() => {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 }

@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
-import "./Usluge.css";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  UslugaManager,
+  type UslugaPrikaz,
+  type FilterUslugaOpcije,
+} from "../models/types";
+import "./Usluge.css";
 
-export const SVE_USLUGE = [
+export const SVE_USLUGE: UslugaPrikaz[] = [
   {
     id: 1,
     naziv: "Opšti pregled",
@@ -369,9 +374,11 @@ export default function Usluge() {
   const [sort, setSort] = useState("popularnost");
   const [page, setPage] = useState(1);
 
+  const manager = useMemo(() => new UslugaManager(SVE_USLUGE), []);
+
   useEffect(() => {
     setPage(1);
-  }, [search, kategorija, vrsteFilter, minCena, maxCena]);
+  }, [search, kategorija, vrsteFilter, minCena, maxCena, sort]);
 
   const resetFilters = () => {
     setSearch("");
@@ -379,53 +386,37 @@ export default function Usluge() {
     setVrsteFilter([]);
     setMinCena(0);
     setMaxCena(20000);
+    setSort("popularnost");
     setPage(1);
   };
 
-  const toggleVrsta = (v: string) =>
+  const toggleVrsta = (v: string) => {
     setVrsteFilter((prev) =>
       prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v],
     );
+  };
 
-  let filtered = SVE_USLUGE.filter((u) => {
-    if (search && !u.naziv.toLowerCase().includes(search.toLowerCase())) {
-      return false;
-    }
+  const opcijeFiltera: FilterUslugaOpcije = {
+    search,
+    kategorija,
+    vrsteFilter,
+    minCena,
+    maxCena,
+    sort,
+  };
 
-    if (kategorija && u.kategorija !== kategorija) {
-      return false;
-    }
-
-    if (
-      vrsteFilter.length &&
-      !vrsteFilter.some((v) => u.vrste.includes(v as any))
-    ) {
-      return false;
-    }
-
-    if (u.cena < minCena || u.cena > maxCena) {
-      return false;
-    }
-
-    return true;
-  });
-
-  filtered = [...filtered].sort((a, b) => {
-    if (sort === "popularnost") return b.brojOcena - a.brojOcena;
-    if (sort === "cena_asc") return a.cena - b.cena;
-    if (sort === "cena_desc") return b.cena - a.cena;
-    if (sort === "ocena") return b.ocene - a.ocene;
-    return 0;
-  });
+  const filtered = manager.filtrirajUsluge(opcijeFiltera);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+
   const paged = filtered.slice(
     (page - 1) * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE,
   );
 
-  const countFor = (kat: string) =>
-    SVE_USLUGE.filter((u) => (kat ? u.kategorija === kat : true)).length;
+  const countFor = (kat: string) => {
+    return manager.izracunajBrojPoKategoriji(kat);
+  };
 
   return (
     <>
@@ -456,6 +447,7 @@ export default function Usluge() {
               {KATEGORIJE.map((k) => (
                 <li key={k.vrednost}>
                   <button
+                    type="button"
                     className={kategorija === k.vrednost ? "active" : ""}
                     onClick={() => setKategorija(k.vrednost)}
                   >
@@ -513,7 +505,7 @@ export default function Usluge() {
             />
           </div>
 
-          <button className="btn-reset" onClick={resetFilters}>
+          <button type="button" className="btn-reset" onClick={resetFilters}>
             Resetuj filtere
           </button>
         </aside>
@@ -523,6 +515,7 @@ export default function Usluge() {
             <span className="count">
               Prikazano: <strong>{filtered.length} usluga</strong>
             </span>
+
             <select
               className="sort-select"
               value={sort}
@@ -571,7 +564,9 @@ export default function Usluge() {
                         <span className="card-price">
                           od {u.cena.toLocaleString("sr-RS")} din
                         </span>
-                        <button className="btn-info">Više info</button>
+                        <button type="button" className="btn-info">
+                          Više info
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -583,13 +578,16 @@ export default function Usluge() {
           {totalPages > 1 && (
             <div className="pagination">
               <button
+                type="button"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
               >
                 ← Preth.
               </button>
+
               {Array.from({ length: totalPages }).map((_, i) => (
                 <button
+                  type="button"
                   key={i}
                   className={page === i + 1 ? "active" : ""}
                   onClick={() => setPage(i + 1)}
@@ -597,7 +595,9 @@ export default function Usluge() {
                   {i + 1}
                 </button>
               ))}
+
               <button
+                type="button"
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
               >

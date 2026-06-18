@@ -76,35 +76,32 @@ export default function Profil() {
       <aside className="profil-sidebar">
         <div className="profil-avatar">👤</div>
         <div className="profil-ime">
+          <br></br>
           {korisnik?.ime} {korisnik?.prezime}
         </div>
-        <div className="profil-email">{korisnik?.email}</div>
-        <button className="izmeni-sliku-btn">Izmeni sliku</button>
-        {[
-          "podaci",
-          "ljubimci",
-          "termini",
-          "istorija",
-          "obavestenja",
-          "lozinka",
-        ].map((t) => (
-          <button
-            key={t}
-            className={`sidebar-btn ${aktivniTab === t ? "aktivan" : ""}`}
-            onClick={() => setAktivniTab(t)}
-          >
-            {
+        <div className="profil-email">
+          {korisnik?.email}
+          <br></br>
+        </div>
+        {["podaci", "ljubimci", "termini", "istorija", "obavestenja"].map(
+          (t) => (
+            <button
+              key={t}
+              className={`sidebar-btn ${aktivniTab === t ? "aktivan" : ""}`}
+              onClick={() => setAktivniTab(t)}
+            >
               {
-                podaci: "Moji podaci",
-                ljubimci: "Moji ljubimci",
-                termini: "Termini",
-                istorija: "Istorija poseta",
-                obavestenja: "Obaveštenja",
-                lozinka: "Promena lozinke",
-              }[t]
-            }
-          </button>
-        ))}
+                {
+                  podaci: "Moji podaci",
+                  ljubimci: "Moji ljubimci",
+                  termini: "Termini",
+                  istorija: "Istorija poseta",
+                  obavestenja: "Obaveštenja",
+                }[t]
+              }
+            </button>
+          ),
+        )}
         <button
           className="sidebar-btn odjava-btn"
           onClick={() => {
@@ -276,16 +273,13 @@ export default function Profil() {
           </div>
         )}
 
-        {(aktivniTab === "istorija" ||
-          aktivniTab === "obavestenja" ||
-          aktivniTab === "lozinka") && (
+        {(aktivniTab === "istorija" || aktivniTab === "obavestenja") && (
           <div className="sekcija-profil">
             <h2>
               {
                 {
                   istorija: "-- ISTORIJA POSETA --",
                   obavestenja: "-- OBAVEŠTENJA --",
-                  lozinka: "-- PROMENA LOZINKE --",
                 }[aktivniTab]
               }
             </h2>

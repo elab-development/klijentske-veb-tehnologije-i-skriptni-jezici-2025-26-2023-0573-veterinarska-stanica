@@ -6,12 +6,12 @@
 .zakazivanje-header {
   background: #eaddff;
   padding: 12px 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: left;
 }
 .zakazivanje-header h1 {
   font-size: 36px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
   font-weight: 800;
   margin-bottom: 4px;
@@ -19,7 +19,7 @@
 }
 .zakazivanje-header p {
   color: #888888;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
   font-size: 13px;
 }
@@ -39,12 +39,12 @@
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
 }
 .forma-sekcija h3 {
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
   text-align: left;
   color: #333;
@@ -59,14 +59,14 @@
   padding: 16px;
   color: black;
   text-align: left;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
 }
 .pregled-panel h3 {
   font-size: 13px;
   color: #333;
   margin-bottom: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
 }
 
@@ -350,4 +350,140 @@
 .uspeh-box p {
   color: #666;
   margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .zakazivanje-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pregled-panel {
+    position: static;
+    width: 100%;
+  }
+
+  .kalendar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .termini-lista {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .zakazivanje-stranica {
+    padding: 20px 12px;
+  }
+
+  .zakazivanje-header h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .zakazivanje-header p {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .zakazivanje-forma,
+  .pregled-panel {
+    padding: 18px;
+  }
+
+  .forma-sekcija h3 {
+    font-size: 16px;
+  }
+
+  .usluga-opcija {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .usluga-cena {
+    align-self: flex-start;
+  }
+
+  .ljubimci-red {
+    grid-template-columns: 1fr;
+  }
+
+  .kalendar-grid {
+    gap: 6px;
+  }
+
+  .dan,
+  .dan-naziv {
+    min-height: 38px;
+    font-size: 13px;
+  }
+
+  .termini-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pregled-red {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .potvrdi-btn,
+  .nazad-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .zakazivanje-header h1 {
+    font-size: 24px;
+  }
+
+  .zakazivanje-header p {
+    font-size: 14px;
+  }
+
+  .zakazivanje-forma,
+  .pregled-panel,
+  .forma-sekcija {
+    padding: 14px;
+  }
+
+  .kalendar-header {
+    font-size: 16px;
+  }
+
+  .kalendar-grid {
+    gap: 4px;
+  }
+
+  .dan,
+  .dan-naziv {
+    min-height: 34px;
+    font-size: 12px;
+  }
+
+  .termini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .termin-btn {
+    width: 100%;
+  }
+
+  .napomena-polje textarea {
+    min-height: 100px;
+  }
+
+  .legenda {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .kontakt-box,
+  .napomene-box {
+    font-size: 13px;
+  }
 }

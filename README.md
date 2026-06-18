@@ -1,179 +1,202 @@
-# Veterinarska ambulanta
+# STS VET - Veterinarska stanica
 
-Aplikacija za veterinarsku ambulantu napravljena u okviru projekta iz predmeta **Klijentske veb tehnologije i skriptni jezici**.
+Klijentska veb aplikacija za veterinarsku stanicu, izrađena korišćenjem React-a, TypeScript-a i Vite alata. Aplikacija omogućava korisnicima da pregledaju veterinarske usluge, filtriraju i pretražuju usluge, registruju se, prijave, zakažu termin, pregledaju profil, dodaju ljubimce i upravljaju zakazanim terminima.
 
-Aplikacija omogućava prikaz osnovnih stranica veterinarske stanice, rad sa korisnikom, ljubimcima, uslugama i zakazivanjem veterinarskih termina.
+## Članovi tima
 
-## Tehnologije
+- Stefan Ilić
+- Sara Ječmenica
+- Tamara Jokić
 
-Projekat je rađen korišćenjem sledećih tehnologija:
+## Korišćene tehnologije
 
 - React
 - TypeScript
 - Vite
 - React Router DOM
 - CSS
+- LocalStorage
+- Dog CEO API
+- The Cat API
+- Git i GitHub
 
-## Pokretanje projekta
+## Pokretanje projekta lokalno
 
-Pre pokretanja potrebno je instalirati sve zavisnosti:
+Prvo klonirati repozitorijum:
 
-```bash
+git clone https://github.com/elab-development/klijentske-veb-tehnologije-i-skriptni-jezici-2025-26-2023-0573-veterinarska-stanica.git
+
+Ući u folder projekta:
+
+cd klijentske-veb-tehnologije-i-skriptni-jezici-2025-26-2023-0573-veterinarska-stanica
+
+Instalirati pakete:
+
 npm install
-```
 
-Nakon toga se aplikacija pokreće komandom:
+Pokrenuti aplikaciju:
 
-```bash
 npm run dev
-```
 
-Aplikacija se zatim otvara u browseru na adresi koju prikaže terminal, najčešće:
+Aplikacija se pokreće na adresi:
 
-```txt
-http://localhost:5173/
-```
+http://localhost:5173
 
-## Instalacija React Router-a
+Za proveru produkcionog build-a:
 
-Ako `react-router-dom` nije instaliran, instalira se komandom:
-
-```bash
-npm install react-router-dom
-```
-
-## Struktura projekta
-
-Osnovna struktura projekta:
-
-```txt
-src/
-├── components/
-├── context/
-│   └── AppContext.tsx
-├── models/
-│   └── types.ts
-├── pages/
-│   ├── Zakazivanje.tsx
-│   └── Zakazivanje.css
-├── App.tsx
-├── App.css
-└── main.tsx
-```
-
-## Opis važnih delova
-
-### `src/models/types.ts`
-
-U ovom fajlu se nalaze TypeScript interfejsi koji definišu strukturu podataka u aplikaciji.
-
-Primeri modela:
-
-- `Korisnik` — podaci o korisniku
-- `Ljubimac` — podaci o ljubimcu
-- `Usluga` — podaci o veterinarskoj usluzi
-- `Termin` — podaci o zakazanom terminu
-- `Recenzija` — podaci o recenziji korisnika
-
-Ovi tipovi omogućavaju da TypeScript proverava da li se podaci koriste ispravno kroz aplikaciju.
-
-### `src/context/AppContext.tsx`
-
-Ovaj fajl služi za globalno stanje aplikacije.
-
-U njemu se pravi:
-
-- `AppContext` — zajednički prostor za podatke aplikacije
-- `AppProvider` — komponenta koja obavija aplikaciju i daje joj podatke
-- `useApp` — pomoćna funkcija preko koje druge komponente koriste podatke iz konteksta
-
-Podaci se čuvaju pomoću `useState`, jer mogu da se menjaju tokom rada aplikacije.
-
-U kontekstu se trenutno čuvaju:
-
-- korisnik
-- informacija da li je korisnik ulogovan
-- lista ljubimaca
-- lista termina
-
-Takođe postoje funkcije za:
-
-- prijavu korisnika
-- odjavu korisnika
-- ažuriranje korisnika
-- dodavanje ljubimca
-- dodavanje termina
-- otkazivanje termina
-
-### `src/pages/Zakazivanje.tsx`
-
-Stranica za zakazivanje veterinarskog termina.
-
-Trenutno sadrži osnovni raspored stranice:
-
-- zaglavlje stranice
-- deo za izbor usluge
-- deo za izbor ljubimca
-- deo za izbor datuma i vremena
-- panel za pregled termina
-
-Ova stranica predstavlja osnovu na koju se kasnije dodaje funkcionalnost za izbor usluge, ljubimca i potvrdu termina.
-
-### `src/App.tsx`
-
-Glavna komponenta aplikacije.
-
-U ovom fajlu se podešava koje stranice se prikazuju korisniku. Ako se koristi `react-router-dom`, ovde se definišu rute aplikacije.
-
-Primer rute za stranicu zakazivanja:
-
-```tsx
-<Route path="/zakazivanje" element={<Zakazivanje />} />
-```
-
-To znači da se stranica `Zakazivanje` prikazuje kada korisnik ode na adresu:
-
-```txt
-http://localhost:5173/zakazivanje
-```
-
-## Dostupne stranice
-
-Trenutno je dodata stranica:
-
-```txt
-/zakazivanje
-```
-
-Stranica prikazuje osnovni izgled forme za zakazivanje veterinarskog termina.
+npm run build
 
 ## Test korisnik
 
-Za prijavu u aplikaciju koristi se test nalog:
+Za testiranje prijave može se koristiti nalog:
 
-```txt
-Email: test@mail.com
-Lozinka: sifra123
-```
+Email:
 
-## Napomene za razvoj
+[test@mail.com](mailto:test@mail.com)
 
-Tok rada na projektu:
+Lozinka:
 
-1. Prvo se pravi osnovna struktura projekta.
-2. Zatim se dodaju modeli u `types.ts`.
-3. Nakon toga se pravi `AppContext.tsx` za globalno stanje.
-4. Zatim se dodaju stranice i komponente.
-5. Na kraju se povezuju stranice preko `App.tsx` i ruta.
+sifra123
 
-Kod je podeljen na manje celine kako bi bio pregledniji i lakši za razumevanje.
+Takođe je moguće registrovati novi nalog kroz stranicu Registracija. Registrovani nalog se čuva u localStorage-u i može se koristiti za kasniju prijavu.
 
-## Autor
+## Struktura projekta
 
-Projekat je napravljen za potrebe fakultetskog projekta iz predmeta Klijentske veb tehnologije i skriptni jezici.
+src/
+components/
+Dugme.tsx
+Footer.tsx
+LjubimacKartica.tsx
+Navbar.tsx
+Polje.tsx
 
----
+context/
+AppContext.tsx
 
-## Napomena o izradi
+models/
+types.ts
 
-Ovaj README fajl je generisan uz pomoć ChatGPT-a, na osnovu opisa projekta i strukture aplikacije.
+pages/
+Kontakt.tsx
+ONama.tsx
+Pocetna.tsx
+PojedinacnaUsluga.tsx
+PolitikaPrivatnosti.tsx
+Prijava.tsx
+Profil.tsx
+Registracija.tsx
+Usluge.tsx
+Zakazivanje.tsx
+
+## Stranice aplikacije
+
+Aplikacija sadrži sledeće stranice:
+
+- Početna stranica - /
+- Prijava - /prijava
+- Registracija - /registracija
+- Zakazivanje termina - /zakazivanje
+- Moj profil - /profil
+- Usluge - /usluge
+- Pojedinačna usluga - /usluga/:id
+- Kontakt - /kontakt
+- O nama - /o-nama
+- Politika privatnosti - /politika-privatnosti
+
+Stranice /zakazivanje i /profil su zaštićene rute. Korisnik mora biti prijavljen da bi im pristupio.
+
+## Glavne funkcionalnosti
+
+Aplikacija omogućava:
+
+- registraciju korisnika;
+- prijavu korisnika;
+- odjavu korisnika;
+- čuvanje korisničkog naloga u localStorage;
+- zaštitu ruta za profil i zakazivanje;
+- pregled veterinarskih usluga;
+- pretragu usluga;
+- filtriranje usluga po kategoriji;
+- filtriranje usluga po vrsti ljubimca;
+- filtriranje po ceni;
+- sortiranje usluga po popularnosti, oceni i ceni;
+- paginaciju liste usluga;
+- prikaz pojedinačne usluge;
+- zakazivanje veterinarskog termina;
+- izbor ljubimca, usluge, datuma i vremena;
+- pregled zakazanih termina na profilu;
+- otkazivanje termina;
+- dodavanje ljubimca;
+- izmenu korisničkih podataka;
+- kontakt formu;
+- prikaz podataka sa eksternih API-ja.
+
+## Reusable komponente
+
+U aplikaciji su kreirane i korišćene sledeće reusable komponente:
+
+- Navbar - navigacioni meni aplikacije;
+- Footer - podnožje aplikacije;
+- Dugme - univerzalna komponenta za dugmad;
+- Polje - univerzalna komponenta za unos podataka;
+- LjubimacKartica - kartica za prikaz ljubimca.
+
+Ove komponente se koriste na više mesta kroz aplikaciju.
+
+## React hooks
+
+U aplikaciji se koriste React hooks:
+
+- useState
+- useEffect
+- useContext
+- useNavigate
+- useParams
+- useMemo
+
+## Klase i interfejsi
+
+U fajlu src/models/types.ts definisani su modeli, interfejsi i klase koje se koriste u aplikaciji.
+
+Aktivno korišćene klase:
+
+- TerminManager
+- UslugaManager
+
+TerminManager se koristi za rad sa terminima, dodavanje termina i otkazivanje termina.
+
+UslugaManager se koristi za filtriranje, sortiranje i brojanje usluga po kategorijama.
+
+Interfejsi sa metodama:
+
+- ITerminManager
+- IUslugaManager
+- AppContextType
+
+## API integracije
+
+Aplikacija koristi dva smislena eksterna API-ja:
+
+1. Dog CEO API
+
+Koristi se za prikaz slika pasa u komponenti LjubimacKartica.
+
+2. The Cat API
+
+Koristi se za prikaz slike mačke na početnoj stranici.
+
+U slučaju greške pri učitavanju API-ja, aplikacija prikazuje rezervni prikaz ili poruku, kako stranica ne bi prestala da radi.
+
+## LocalStorage
+
+Aplikacija koristi localStorage za čuvanje podataka:
+
+- registrovaniNalog - podaci registrovanog korisnika;
+- jeUlogovan - status prijave korisnika;
+- zapamceniEmail - email adresa ako korisnik izabere opciju „Zapamti me“.
+
+Ovi podaci se koriste u okviru aplikacije za prijavu, registraciju i zadržavanje statusa korisnika.
+
+## Napomena
+
+Projekat je izrađen kao seminarski rad iz predmeta Klijentske veb tehnologije i skriptni jezici. Za izradu projekta je korisecna pomoc sledećih AI modela: GPT-5.5

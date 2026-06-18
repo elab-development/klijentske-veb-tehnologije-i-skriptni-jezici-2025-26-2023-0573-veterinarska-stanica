@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
-import { createContext, useContext, useState } from "react";
-import type { Korisnik, Ljubimac, Termin } from "../models/types";
+import { createContext, useContext, useState, useEffect } from "react";
+import {
+  TerminManager,
+  type Korisnik,
+  type Ljubimac,
+  type Termin,
+} from "../models/types";
 
 interface SacuvaniNalog {
   korisnik: Korisnik;
@@ -82,6 +87,36 @@ function ucitajNalog(): SacuvaniNalog | null {
   }
 }
 
+function ucitajLjubimce(): Ljubimac[] {
+  const sacuvaniLjubimci = localStorage.getItem("ljubimci");
+
+  if (!sacuvaniLjubimci) {
+    return pocetniLjubimci;
+  }
+
+  try {
+    return JSON.parse(sacuvaniLjubimci) as Ljubimac[];
+  } catch {
+    localStorage.removeItem("ljubimci");
+    return pocetniLjubimci;
+  }
+}
+
+function ucitajTermine(): Termin[] {
+  const sacuvaniTermini = localStorage.getItem("termini");
+
+  if (!sacuvaniTermini) {
+    return pocetniTermini;
+  }
+
+  try {
+    return JSON.parse(sacuvaniTermini) as Termin[];
+  } catch {
+    localStorage.removeItem("termini");
+    return pocetniTermini;
+  }
+}
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const sacuvaniNalog = ucitajNalog();
 
@@ -93,9 +128,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.getItem("jeUlogovan") === "true",
   );
 
-  const [ljubimci, setLjubimci] = useState<Ljubimac[]>(pocetniLjubimci);
+  const [ljubimci, setLjubimci] = useState<Ljubimac[]>(ucitajLjubimce);
 
-  const [termini, setTermini] = useState<Termin[]>(pocetniTermini);
+  const [termini, setTermini] = useState<Termin[]>(ucitajTermine);
+
+  useEffect(() => {
+    localStorage.setItem("ljubimci", JSON.stringify(ljubimci));
+  }, [ljubimci]);
+
+  useEffect(() => {
+    localStorage.setItem("termini", JSON.stringify(termini));
+  }, [termini]);
 
   const prijavi = (email: string, lozinka: string): boolean => {
     const nalog = ucitajNalog();
@@ -165,16 +208,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
   };
 
   const otkaziTermin = (id: number) => {
-    setTermini((prev) => prev.filter((termin) => termin.id !== id));
+    setTermini((prev) => {
+      const manager = new TerminManager(prev);
+      return manager.otkaziTermin(id);
+    });
   };
 
   const dodajTermin = (t: Omit<Termin, "id">) => {
-    const noviTermin: Termin = {
-      ...t,
-      id: Date.now(),
-    };
-
-    setTermini((prev) => [...prev, noviTermin]);
+    setTermini((prev) => {
+      const manager = new TerminManager(prev);
+      return manager.dodajTermin(t);
+    });
   };
 
   return (

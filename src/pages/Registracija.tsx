@@ -154,35 +154,6 @@ export default function Registracija() {
           <p className="hint">Lozinka mora imati najmanje 8 karaktera</p>
         </section>
 
-        <section className="card">
-          <h2 className="section-title">-- PODACI O LJUBIMCU (opciono)--</h2>
-
-          <div className="row-2">
-            <Polje
-              label="Ime ljubimca"
-              value={form.imeLjubimca}
-              onChange={(val) => update("imeLjubimca", val)}
-              placeholder="Npr. Reks"
-            />
-
-            <div className="field">
-              <label>Vrsta ljubimca</label>
-              <select
-                value={form.vrsta}
-                onChange={(e) => update("vrsta", e.target.value)}
-              >
-                <option value="">Izaberite vrstu</option>
-                <option value="Pas">Pas</option>
-                <option value="Mačka">Mačka</option>
-                <option value="Ptica">Ptica</option>
-                <option value="Egzotična životinja">Egzotična životinja</option>
-              </select>
-            </div>
-          </div>
-
-          <p className="hint">Više ljubimaca možete dodati u profilu</p>
-        </section>
-
         <div className="checkboxes">
           <label className="check-label">
             <input
