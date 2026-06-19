@@ -7,6 +7,8 @@
   font-weight: 600;
   transition: opacity 0.2s;
   letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .dugme:hover:not(:disabled) {
   opacity: 0.85;
@@ -18,9 +20,13 @@
 .dugme-primarno {
   background-color: #4f378b;
   color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 .dugme-sekundarno {
   background-color: #e8b84b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   color: #333;
 }
 .dugme-opasnost {

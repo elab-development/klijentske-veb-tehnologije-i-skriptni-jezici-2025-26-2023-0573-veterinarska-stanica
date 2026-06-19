@@ -211,6 +211,8 @@ ul {
   background: var(--purple-btn);
   color: var(--white);
   font-size: 0.95rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
   font-weight: 700;
   letter-spacing: 0.1em;
   border: none;
@@ -288,7 +290,7 @@ ul {
   text-align: center;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 640px) {
   .navbar {
     padding: 0 1rem;
@@ -319,14 +321,14 @@ ul {
   border-radius: var(--radius-input);
   background: var(--white);
   font-size: 0.9rem;
-  color: var(--text-dark); /* Ovo će sada sigurno primeniti tamna slova */
+  color: var(--text-dark); 
   outline: none;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
 }
 
-/* Isto uradi i za :focus stanje */
+
 .field input:focus,
 .card-body input:focus {
   border-color: var(--purple);
