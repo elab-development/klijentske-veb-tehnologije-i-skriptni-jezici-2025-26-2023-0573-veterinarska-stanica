@@ -142,14 +142,10 @@ export default function Profil() {
 
         {aktivniTab === "ljubimci" && (
           <div className="sekcija-profil">
-            <div className="ljubimci-header">
+            
               <h2>-- MOJI LJUBIMCI --</h2>
-              <Dugme
-                tekst="+ Dodaj ljubimca"
-                tip="sekundarno"
-                onClick={() => setShowDodajLjubimca(true)}
-              />
-            </div>
+              
+            
             <div className="ljubimci-grid">
               {ljubimci.map((l) => (
                 <LjubimacKartica key={l.id} ljubimac={l} />
