@@ -162,9 +162,11 @@ export default function Registracija() {
               onChange={(e) => update("prihvataUslove", e.target.checked)}
             />
             <span>
-              Prihvatam <a href="#">uslove korišćenja</a> i{" "}
-              <a href="#">politiku privatnosti</a>{" "}
-              <span className="req">*</span>
+               Prihvatam{" "}
+              <Link to="/politika-privatnosti">
+               uslove korišćenja i politiku privatnosti
+              </Link>{" "}
+            <span className="req">*</span>
             </span>
           </label>
 

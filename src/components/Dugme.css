@@ -9,6 +9,7 @@
   letter-spacing: 0.5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
+  width: 100%;
 }
 .dugme:hover:not(:disabled) {
   opacity: 0.85;
@@ -18,10 +19,11 @@
   cursor: not-allowed;
 }
 .dugme-primarno {
-  background-color: #4f378b;
+  background-color: #7c4dbe;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
+
 }
 .dugme-sekundarno {
   background-color: #e8b84b;
